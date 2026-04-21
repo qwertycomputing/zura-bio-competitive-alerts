@@ -1,0 +1,116 @@
+// AND mode: findings must mention a competitor AND a keyword together.
+// Set to false for OR mode (either alone qualifies — broader but noisier).
+export const AND_MODE = false;
+
+// Canonical keyword name → all aliases to search for
+export const KEYWORD_ALIASES = {
+  'Hidradenitis suppurativa': ['Hidradenitis suppurativa', 'HS', 'acne inversa'],
+  'Systemic sclerosis':       ['Systemic sclerosis', 'scleroderma', 'SSc'],
+  'Polymyalgia rheumatica':   ['Polymyalgia rheumatica', 'PMR'],
+  'Giant cell arteritis':     ['Giant cell arteritis', 'GCA', 'temporal arteritis'],
+  'COPD':                     ['COPD', 'chronic obstructive pulmonary disease', 'emphysema', 'chronic bronchitis'],
+  'IL-33':                    ['IL-33', 'IL33', 'interleukin-33', 'interleukin 33'],
+  'IL-7R':                    ['IL-7R', 'IL7R', 'interleukin-7 receptor', 'interleukin 7 receptor', 'CD127'],
+  'IL-17':                    ['IL-17', 'IL17', 'interleukin-17', 'interleukin 17'],
+  'BAFF':                     ['BAFF', 'Baff', 'BLyS', 'B-lymphocyte stimulator', 'TNFSF13B'],
+};
+
+// Trusted domains — findings from these score higher and are never blocked
+export const TRUSTED_DOMAINS = [
+  // Regulatory & government
+  'sec.gov', 'clinicaltrials.gov', 'pubmed.ncbi.nlm.nih.gov', 'fda.gov', 'ema.europa.eu',
+  // Newswires
+  'prnewswire.com', 'globenewswire.com', 'businesswire.com', 'accesswire.com',
+  // Major news
+  'reuters.com', 'bloomberg.com', 'statnews.com', 'fiercebiotech.com', 'biopharmadive.com',
+  'endpoints11.com', 'evaluate.com', 'nature.com', 'nejm.org', 'thelancet.com',
+  // Medical/scientific
+  'jamanetwork.com', 'bmj.com', 'annrheumdis.bmj.com', 'aad.org', 'eadv.org',
+  // Company IR pages (add more as needed)
+  'ir.avalotx.com', 'ir.moonlaketx.com', 'ir.incyte.com', 'investor.incyte.com',
+  'ucb.com', 'insmed.com', 'aclaristx.com', 'anaptysbio.com',
+];
+
+// Source type quality tiers — used in confidence scoring
+export const SOURCE_TYPE_SCORES = {
+  'sec 8-k': 30, 'sec filing': 30,
+  'press release': 25, 'news release': 25,
+  'pubmed': 25, 'scientific publication': 25, 'clinical trial': 25,
+  'conference abstract': 20, 'scientific presentation': 20, 'conference': 20,
+  'news article': 15, 'news': 15, 'market analysis': 10,
+  'analyst update': 10, 'financial report': 10,
+};
+
+// Score a finding 0–100
+export function scoreFindings(finding) {
+  let score = 0;
+  const domain = (finding.source_domain ?? '').toLowerCase();
+  const sourceType = (finding.source_type ?? '').toLowerCase();
+  const today = new Date().toISOString().slice(0, 10);
+  const pubDate = finding.publication_date?.slice(0, 10) ?? '';
+
+  // Domain trust (up to 40 pts)
+  if (TRUSTED_DOMAINS.some(d => domain.includes(d))) score += 40;
+  else if (BLOCKED_DOMAINS.some(d => domain.includes(d))) score -= 20;
+  else score += 15; // unknown domain — neutral
+
+  // Source type quality (up to 30 pts)
+  const typeScore = Object.entries(SOURCE_TYPE_SCORES).find(([k]) => sourceType.includes(k))?.[1] ?? 5;
+  score += typeScore;
+
+  // Date recency (up to 20 pts)
+  if (pubDate === today) score += 20;
+  else if (pubDate >= today.slice(0, 7)) score += 10; // same month
+  else if (pubDate) score += 5;
+
+  // Both competitor AND keyword matched (10 pts bonus)
+  const hasCompetitor = (finding.competitors ?? []).some(c => c !== 'Keyword matched');
+  const hasKeyword = (finding.keywords ?? []).length > 0;
+  if (hasCompetitor && hasKeyword) score += 10;
+
+  return Math.max(0, Math.min(100, score));
+}
+
+// Source types that are considered low quality — filtered out in post-processing
+export const BLOCKED_SOURCE_TYPES = [
+  'blog', 'opinion', 'commentary', 'editorial', 'sponsored', 'advertorial', 'review post',
+];
+
+// Domains known to surface stale or low-quality content
+export const BLOCKED_DOMAINS = [
+  'seekingalpha.com', 'fool.com', 'benzinga.com', 'tipranks.com',
+  'gurufocus.com', 'stockanalysis.com', 'simply wall st', 'simplywall.st',
+];
+
+// Summary phrases that indicate the article is recapping old events, not reporting new ones
+export const STALE_PHRASES = [
+  'last month', 'last year', 'last quarter', 'earlier this year', 'previously announced',
+  'as previously reported', 'months ago', 'years ago', 'back in 20', 'announced in 20',
+  'reported in 20', 'in a prior', 'retrospective',
+];
+
+export function isStaleContent(finding) {
+  const sourceType = (finding.source_type ?? '').toLowerCase();
+  const domain = (finding.source_domain ?? '').toLowerCase();
+  const summary = (finding.summary ?? '').toLowerCase();
+
+  if (BLOCKED_SOURCE_TYPES.some(t => sourceType.includes(t))) return true;
+  if (BLOCKED_DOMAINS.some(d => domain.includes(d))) return true;
+  if (STALE_PHRASES.some(p => summary.includes(p))) return true;
+  return false;
+}
+
+// Build flat list of all aliases for the prompt
+export const allAliasesForPrompt = Object.entries(KEYWORD_ALIASES)
+  .map(([canonical, aliases]) => `${canonical} (also: ${aliases.slice(1).join(', ')})`)
+  .join('; ');
+
+// Normalize a keyword string returned by Firecrawl to its canonical name
+export function normalizeKeyword(raw) {
+  if (!raw) return raw;
+  const lower = raw.toLowerCase().trim();
+  for (const [canonical, aliases] of Object.entries(KEYWORD_ALIASES)) {
+    if (aliases.some(a => lower.includes(a.toLowerCase()))) return canonical;
+  }
+  return raw;
+}

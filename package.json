@@ -1,0 +1,16 @@
+{
+  "name": "zura-bio-competitive-alerts",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "run-agent": "node --env-file=.env agent.js",
+    "notify": "node --env-file=.env notify.js",
+    "full": "node --env-file=.env agent.js && node --env-file=.env notify.js",
+    "historical": "node historical.js"
+  },
+  "dependencies": {
+    "@mendable/firecrawl-js": "^4.18.3",
+    "node-fetch": "^3.3.0",
+    "zod": "^3.22.0"
+  }
+}

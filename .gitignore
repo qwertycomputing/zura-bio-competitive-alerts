@@ -1,0 +1,5 @@
+.env
+node_modules/
+results/data_*.json
+results/seen_links.json
+results/run.log
