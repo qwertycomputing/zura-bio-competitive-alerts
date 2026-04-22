@@ -16,8 +16,14 @@
   .stat .num { font-size: 2rem; font-weight: 800; color: #0f172a; }
   .stat .label { font-size: 0.78rem; color: #64748b; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
   .layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
-  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
   .sidebar { position: sticky; top: 24px; height: fit-content; }
+  .mobile-filter-toggle { display: none; width: 100%; padding: 10px 16px; background: #0f172a; color: white; border: none; border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; margin-bottom: 16px; align-items: center; justify-content: center; gap: 8px; }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; position: static; }
+    .sidebar.open { display: block; }
+    .mobile-filter-toggle { display: flex; }
+  }
   .panel { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 16px; }
   .panel h3 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #64748b; margin-bottom: 14px; }
   select, input { width: 100%; padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.875rem; color: #1e293b; background: #f8fafc; margin-bottom: 10px; }
@@ -48,32 +54,33 @@
 <body>
 <header>
   <h1>Zura Bio — Competitive Intelligence</h1>
-  <div class="meta">Generated 2026-04-21, 4:33:24 p.m. &nbsp;|&nbsp; 7 findings</div>
+  <div class="meta">Generated 2026-04-21, 10:49:41 p.m. &nbsp;|&nbsp; 8 findings</div>
 </header>
 <div class="container">
   <div class="stats">
-    <div class="stat"><div class="num">7</div><div class="label">Total Findings</div></div>
-    <div class="stat"><div class="num">4</div><div class="label">Competitors Detected</div></div>
-    <div class="stat"><div class="num">4</div><div class="label">Keywords Matched</div></div>
+    <div class="stat"><div class="num">8</div><div class="label">Total Findings</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">Competitors Detected</div></div>
+    <div class="stat"><div class="num">3</div><div class="label">Keywords Matched</div></div>
     <div class="stat"><div class="num">0</div><div class="label">PubMed Publications</div></div>
-    <div class="stat"><div class="num">1</div><div class="label">Clinical Trial Updates</div></div>
-    <div class="stat"><div class="num">0</div><div class="label">SEC Filings</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">Clinical Trial Updates</div></div>
+    <div class="stat"><div class="num">3</div><div class="label">SEC Filings</div></div>
   </div>
+  <button class="mobile-filter-toggle" onclick="toggleFilters()" id="filter-toggle-btn">&#9776; Show Filters</button>
   <div class="layout">
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
       <div class="panel">
         <h3>Filter</h3>
         <select id="filter-competitor">
           <option value="">All Competitors</option>
-          <option value="anab">ANAB</option><option value="glue">GLUE</option><option value="incy">INCY</option><option value="kymr">KYMR</option><option value="keyword matched">Keyword matched</option>
+          <option value="candid">Candid</option><option value="glpg">GLPG</option><option value="glue">GLUE</option><option value="keyword matched">Keyword matched</option><option value="orka">ORKA</option><option value="ucb">UCB</option><option value="vor">VOR</option>
         </select>
         <select id="filter-keyword">
           <option value="">All Keywords</option>
-          <option value="copd">COPD</option><option value="hidradenitis suppurativa">Hidradenitis suppurativa</option><option value="polymyalgia rheumatica">Polymyalgia rheumatica</option><option value="systemic sclerosis">Systemic sclerosis</option>
+          <option value="copd">COPD</option><option value="hidradenitis suppurativa">Hidradenitis suppurativa</option><option value="il-33">IL-33</option>
         </select>
         <select id="filter-source">
           <option value="">All Source Types</option>
-          <option value="Press Release">Press Release</option><option value="Clinical Trial Update">Clinical Trial Update</option>
+          <option value="Press Release">Press Release</option><option value="SEC Filing">SEC Filing</option><option value="News Article">News Article</option>
         </select>
         <input type="text" id="filter-search" placeholder="Search summaries...">
         <select id="filter-confidence">
@@ -87,37 +94,51 @@
         <h3>Findings by Competitor</h3>
         
     <div class="chart-row">
-      <div class="chart-label">Keyword matched</div>
+      <div class="chart-label">UCB</div>
       <div class="chart-bar-wrap">
         <div class="chart-bar" style="width:100%"></div>
-        <span class="chart-count">4</span>
+        <span class="chart-count">2</span>
       </div>
     </div>
     <div class="chart-row">
-      <div class="chart-label">INCY</div>
+      <div class="chart-label">VOR</div>
       <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:25%"></div>
+        <div class="chart-bar" style="width:50%"></div>
         <span class="chart-count">1</span>
       </div>
     </div>
     <div class="chart-row">
-      <div class="chart-label">ANAB</div>
+      <div class="chart-label">Keyword matched</div>
       <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:25%"></div>
+        <div class="chart-bar" style="width:50%"></div>
+        <span class="chart-count">1</span>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">ORKA</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="width:50%"></div>
         <span class="chart-count">1</span>
       </div>
     </div>
     <div class="chart-row">
       <div class="chart-label">GLUE</div>
       <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:25%"></div>
+        <div class="chart-bar" style="width:50%"></div>
         <span class="chart-count">1</span>
       </div>
     </div>
     <div class="chart-row">
-      <div class="chart-label">KYMR</div>
+      <div class="chart-label">Candid</div>
       <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:25%"></div>
+        <div class="chart-bar" style="width:50%"></div>
+        <span class="chart-count">1</span>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">GLPG</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="width:50%"></div>
         <span class="chart-count">1</span>
       </div>
     </div>
@@ -128,121 +149,142 @@
       <div class="grid" id="card-grid">
         
     <div class="card"
-      data-competitors="incy"
-      data-source="Press Release"
-      data-keywords="hidradenitis suppurativa"
-      data-confidence="95">
-      <div class="card-header">
-        <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">INCY</span>
-        <span class="keyword-tag">Hidradenitis suppurativa</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 95/100">High · 95</span>
-      </div>
-      <p class="summary">Incyte announced positive 54-week late-breaking data for Povorcitinib in Hidradenitis Suppurativa at the 2026 American Academy of Dermatology (AAD) Annual Meeting.</p>
-      <a class="source-link" href="https://www.businesswire.com/news/home/20260421480376/en/Incyte-Highlights-New-Phase-3-Tafasitamab-Data-at-the-2026-American-Society-of-Clinical-Oncology-ASCO-Annual-Meeting" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-20 · businesswire.com</div>
-    </div>
-    <div class="card"
-      data-competitors="keyword matched"
-      data-source="Press Release"
-      data-keywords="hidradenitis suppurativa"
-      data-confidence="85">
-      <div class="card-header">
-        <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">Hidradenitis suppurativa</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 85/100">High · 85</span>
-      </div>
-      <p class="summary">HKeybio launched the world's first non-human primate (NHP) model for Hidradenitis Suppurativa (HS), which exhibits high clinical consistency to address bottlenecks in drug research and development.</p>
-      <a class="source-link" href="https://www.prnewswire.com/news-releases/hkeybio-launches-worlds-first-nhp-hidradenitis-suppurativa-model-with-high-clinical-consistency-to-tackle-global-drug-rd-bottleneck-302746793.html" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-20 · prnewswire.com</div>
-    </div>
-    <div class="card"
-      data-competitors="anab"
+      data-competitors="ucb"
       data-source="Press Release"
       data-keywords=""
+      data-confidence="75">
+      <div class="card-header">
+        <span class="badge" style="background:#2563eb">Press Release</span>
+        <span class="competitor-tag">UCB</span>
+        
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 75/100">High · 75</span>
+      </div>
+      <p class="summary">Antengene Corporation presented preclinical data from three novel programs (ATG-125, ATG-106, and ATG-112) at the AACR Annual Meeting 2026. The announcement highlights UCB as a partner on the ATG-201 program.</p>
+      <a class="source-link" href="https://www.prnewswire.com/news-releases/antengene-presents-three-novel-programs-at-aacr-2026-highlighting-next-generation-adc-and-antengager-tces-302745764.html" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-22 · prnewswire.com</div>
+    </div>
+    <div class="card"
+      data-competitors="vor"
+      data-source="SEC Filing"
+      data-keywords=""
+      data-confidence="80">
+      <div class="card-header">
+        <span class="badge" style="background:#6b7280">SEC Filing</span>
+        <span class="competitor-tag">VOR</span>
+        
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 80/100">High · 80</span>
+      </div>
+      <p class="summary">Vor Biopharma Inc. filed a preliminary proxy statement (PRE 14A) for its 2026 Annual Meeting of Stockholders, scheduled for June 22, 2026.</p>
+      <a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1817229/000114036125027774/ny20051455x1_pre14a.htm" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-22 · sec.gov</div>
+    </div>
+    <div class="card"
+      data-competitors="ucb"
+      data-source="Press Release"
+      data-keywords="hidradenitis suppurativa"
       data-confidence="85">
       <div class="card-header">
         <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">ANAB</span>
-        
+        <span class="competitor-tag">UCB</span>
+        <span class="keyword-tag">Hidradenitis suppurativa</span>
         <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 85/100">High · 85</span>
       </div>
-      <p class="summary">AnaptysBio announced the completion of the separation of First Tracks Biotherapeutics; AnaptysBio will continue to trade under the symbol 'ANAB'.</p>
-      <a class="source-link" href="https://ir.anaptysbio.com/news-releases/news-release-details/anaptys-completes-separation-first-tracks-biotherapeutics-and" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-20 · anaptysbio.com</div>
+      <p class="summary">The Skin of Color Society (SOCS) 22nd Annual Scientific Symposium featured research on metabolic pathways of hidradenitis suppurativa (HS). UCB was highlighted as a partner-level sponsor of the symposium.</p>
+      <a class="source-link" href="https://www.prnewswire.com/news-releases/the-skin-of-color-society-socs-successfully-presents-landmark-symposium-championing-evidence-based-dermatology-and-collaboration-302748350.html" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-21 · prnewswire.com</div>
     </div>
     <div class="card"
-      data-competitors="glue|kymr"
+      data-competitors="keyword matched"
+      data-source="News Article"
+      data-keywords="copd|il-33"
+      data-confidence="40">
+      <div class="card-header">
+        <span class="badge" style="background:#0891b2">News Article</span>
+        <span class="competitor-tag">Keyword matched</span>
+        <span class="keyword-tag">COPD</span><span class="keyword-tag">IL-33</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#dc26261a;color:#dc2626;border:1px solid #dc262640" title="Confidence score: 40/100">Low · 40</span>
+      </div>
+      <p class="summary">AstraZeneca announced that its IL-33-targeting biologic tozorakimab met the primary endpoint in the Phase III MIRANDA trial, significantly reducing exacerbations in patients with COPD. This is the third positive pivotal Phase III win for tozorakimab in COPD.</p>
+      <a class="source-link" href="https://www.clinicaltrialsarena.com/news/astrazenecas-copd-drug-gains-third-phase-iii-win/" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-21 · clinicaltrialsarena.com</div>
+    </div>
+    <div class="card"
+      data-competitors="orka"
+      data-source="SEC Filing"
+      data-keywords=""
+      data-confidence="55">
+      <div class="card-header">
+        <span class="badge" style="background:#6b7280">SEC Filing</span>
+        <span class="competitor-tag">ORKA</span>
+        
+        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 55/100">Medium · 55</span>
+      </div>
+      <p class="summary">Oruka Therapeutics filed a prospectus supplement regarding the potential resale of up to 39.4 million shares of common stock by selling stockholders, including Point72 and SILV Fund.</p>
+      <a class="source-link" href="https://www.stocktitan.net/sec-filings/ORKA/424b7-oruka-therapeutics-inc-prospectus-filed-pursuant-to-rule-424-b--7bec041fd98f.html" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-21 · stocktitan.net</div>
+    </div>
+    <div class="card"
+      data-competitors="glue"
       data-source="Press Release"
       data-keywords=""
-      data-confidence="85">
+      data-confidence="75">
       <div class="card-header">
         <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">GLUE</span><span class="competitor-tag">KYMR</span>
+        <span class="competitor-tag">GLUE</span>
         
-        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 85/100">High · 85</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 75/100">High · 75</span>
       </div>
-      <p class="summary">A DelveInsight report on the Follicular Lymphoma clinical trial landscape identifies Monte Rosa Therapeutics (GLUE) and Kymera Therapeutics (KYMR) among the key companies with active development programs.</p>
-      <a class="source-link" href="https://www.globenewswire.com/news-release/2026/04/21/3278305/0/en/Follicular-Lymphoma-Clinical-Trial-Space-Intensifies-with-45-Companies-in-Active-Development-DelveInsight.html" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-20 · globenewswire.com</div>
+      <p class="summary">Monte Rosa Therapeutics presented preclinical data for its CCNE1-directed molecular glue degrader (MGD) at the AACR 2026 Annual Meeting. The data showed deep tumor regressions in CCNE1-amplified in vivo models.</p>
+      <a class="source-link" href="https://www.globenewswire.com/news-release/2026/04/21/3276859/0/en/Monte-Rosa-Therapeutics-Presents-Preclinical-Data-at-American-Association-for-Cancer-Research-AACR-Annual-Meeting-2026-on-the-Potential-of-its-Cyclin-E1-CCNE1-directed-Molecular-Gl.html" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-21 · globenewswire.com</div>
     </div>
     <div class="card"
-      data-competitors="keyword matched"
+      data-competitors="candid"
       data-source="Press Release"
-      data-keywords="polymyalgia rheumatica"
-      data-confidence="85">
+      data-keywords=""
+      data-confidence="75">
       <div class="card-header">
         <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">Polymyalgia rheumatica</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 85/100">High · 85</span>
+        <span class="competitor-tag">Candid</span>
+        
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 75/100">High · 75</span>
       </div>
-      <p class="summary">Merck and Eisai updated findings for the Phase 3 LITESPARK-012 trial; the study population details mention polymyalgia rheumatica as a condition of interest or exclusion.</p>
-      <a class="source-link" href="https://www.businesswire.com/news/home/20260421205834/en/Merck-and-Eisai-Provide-Update-on-Phase-3-LITESPARK-012-Trial-Evaluating-First-Line-Combination-Treatments-for-Certain-Patients-With-Advanced-Renal-Cell-Carcinoma-RCC" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-20 · businesswire.com</div>
+      <p class="summary">Candid announced the appointment of Andrew Shaw as Chief Product & Technology Officer to lead the scaling of Candid’s AI infrastructure.</p>
+      <a class="source-link" href="https://www.prnewswire.com/news-releases/candid-appoints-andrew-shaw-as-chief-product--technology-officer-to-accelerate-platform-growth-302747659.html" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-21 · prnewswire.com</div>
     </div>
     <div class="card"
-      data-competitors="keyword matched"
-      data-source="Clinical Trial Update"
-      data-keywords="systemic sclerosis"
-      data-confidence="85">
+      data-competitors="glpg"
+      data-source="SEC Filing"
+      data-keywords=""
+      data-confidence="80">
       <div class="card-header">
-        <span class="badge" style="background:#9333ea">Clinical Trial Update</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">Systemic sclerosis</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 85/100">High · 85</span>
+        <span class="badge" style="background:#6b7280">SEC Filing</span>
+        <span class="competitor-tag">GLPG</span>
+        
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 80/100">High · 80</span>
       </div>
-      <p class="summary">A clinical trial update for study NCT07540741, which evaluates the efficacy and safety of PCSK9 inhibitors in patients with large-artery vasculitis, includes systemic sclerosis as a relevant autoimmune condition.</p>
-      <a class="source-link" href="https://clinicaltrials.gov/study/NCT07540741" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-20 · clinicaltrials.gov</div>
-    </div>
-    <div class="card"
-      data-competitors="keyword matched"
-      data-source="Press Release"
-      data-keywords="copd"
-      data-confidence="85">
-      <div class="card-header">
-        <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">COPD</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 85/100">High · 85</span>
-      </div>
-      <p class="summary">Pulmatrix announced the closing of a preferred stock transaction as part of its merger strategy, which supports the development of its COPD product candidates.</p>
-      <a class="source-link" href="https://www.prnewswire.com/news-releases/pulmatrix-announces-closing-of-preferred-stock-transaction-as-part-of-planned-merger-302748188.html" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-20 · prnewswire.com</div>
+      <p class="summary">Galapagos NV made documents related to its Shareholders' Meetings available on the company's website as part of an SEC filing.</p>
+      <a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1421876/000119312526130447/d54917dex999.htm" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-21 · sec.gov</div>
     </div>
       </div>
     </div>
   </div>
 </div>
 <script>
+  function toggleFilters() {
+    const sidebar = document.getElementById('sidebar');
+    const btn = document.getElementById('filter-toggle-btn');
+    sidebar.classList.toggle('open');
+    btn.textContent = sidebar.classList.contains('open') ? '✕ Hide Filters' : '☰ Show Filters';
+  }
   const cards = document.querySelectorAll('.card');
   const countEl = document.getElementById('results-count');
 
   function updateCount() {
     const visible = [...cards].filter(c => !c.classList.contains('hidden')).length;
-    countEl.textContent = visible + ' of 7 findings';
+    countEl.textContent = visible + ' of 8 findings';
   }
 
   function applyFilters() {
