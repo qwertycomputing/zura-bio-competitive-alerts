@@ -1,6 +1,13 @@
 import fs from 'fs';
 import { scoreFindings } from './keywords.js';
 
+function toISODate(raw) {
+  if (!raw) return '';
+  if (/^\d{4}-\d{2}-\d{2}/.test(raw)) return raw.slice(0, 10);
+  const d = new Date(raw);
+  return isNaN(d) ? '' : d.toISOString().slice(0, 10);
+}
+
 const resultsDir = 'results';
 const files = fs.readdirSync(resultsDir)
   .filter(f => f.startsWith('data_') && f.endsWith('.json'))
@@ -26,6 +33,7 @@ for (const file of files) {
       ...f,
       competitors: cleanCompetitors.length ? cleanCompetitors : ['Keyword matched'],
       keywords: cleanKeywords,
+      publication_date: toISODate(f.publication_date),
     };
     allFindings.push({ ...normalized, confidence: f.confidence ?? scoreFindings(normalized) });
   }
@@ -102,8 +110,14 @@ const html = `<!DOCTYPE html>
   .stat .num { font-size: 1.8rem; font-weight: 800; color: #0f172a; }
   .stat .label { font-size: 0.75rem; color: #64748b; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
   .layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
-  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
   .sidebar { position: sticky; top: 24px; height: fit-content; }
+  .mobile-filter-toggle { display: none; width: 100%; padding: 10px 16px; background: #0f172a; color: white; border: none; border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; margin-bottom: 16px; align-items: center; justify-content: center; gap: 8px; }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; position: static; }
+    .sidebar.open { display: block; }
+    .mobile-filter-toggle { display: flex; }
+  }
   .panel { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 16px; }
   .panel h3 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #64748b; margin-bottom: 12px; }
   .date-row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
@@ -147,8 +161,9 @@ const html = `<!DOCTYPE html>
     <div class="stat"><div class="num">${allKeywords.length}</div><div class="label">Keywords</div></div>
     <div class="stat"><div class="num" id="s-visible">${allFindings.length}</div><div class="label">Showing</div></div>
   </div>
+  <button class="mobile-filter-toggle" onclick="toggleFilters()" id="filter-toggle-btn">&#9776; Show Filters</button>
   <div class="layout">
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
       <div class="panel">
         <h3>Date Range</h3>
         <div class="preset-grid">
@@ -210,6 +225,13 @@ const html = `<!DOCTYPE html>
   const DATA_MAX = '${maxDate}';
 
   function toISO(d) { return d.toISOString().slice(0, 10); }
+
+  function toggleFilters() {
+    const sidebar = document.getElementById('sidebar');
+    const btn = document.getElementById('filter-toggle-btn');
+    sidebar.classList.toggle('open');
+    btn.textContent = sidebar.classList.contains('open') ? '✕ Hide Filters' : '☰ Show Filters';
+  }
 
   function setPreset(key) {
     const today = new Date();
