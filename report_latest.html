@@ -54,15 +54,15 @@
 <body>
 <header>
   <h1>Zura Bio — Competitive Intelligence</h1>
-  <div class="meta">Generated 2026-04-22, 10:13:59 a.m. &nbsp;|&nbsp; 7 findings</div>
+  <div class="meta">Generated 2026-04-23, 7:04:26 a.m. &nbsp;|&nbsp; 9 findings</div>
 </header>
 <div class="container">
   <div class="stats">
-    <div class="stat"><div class="num">7</div><div class="label">Total Findings</div></div>
-    <div class="stat"><div class="num">1</div><div class="label">Competitors Detected</div></div>
-    <div class="stat"><div class="num">7</div><div class="label">Keywords Matched</div></div>
+    <div class="stat"><div class="num">9</div><div class="label">Total Findings</div></div>
+    <div class="stat"><div class="num">2</div><div class="label">Competitors Detected</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">Keywords Matched</div></div>
     <div class="stat"><div class="num">0</div><div class="label">PubMed Publications</div></div>
-    <div class="stat"><div class="num">0</div><div class="label">Clinical Trial Updates</div></div>
+    <div class="stat"><div class="num">3</div><div class="label">Clinical Trial Updates</div></div>
     <div class="stat"><div class="num">0</div><div class="label">SEC Filings</div></div>
   </div>
   <button class="mobile-filter-toggle" onclick="toggleFilters()" id="filter-toggle-btn">&#9776; Show Filters</button>
@@ -72,15 +72,15 @@
         <h3>Filter</h3>
         <select id="filter-competitor">
           <option value="">All Competitors</option>
-          <option value="incy">INCY</option><option value="keyword matched">Keyword matched</option>
+          <option value="incy">INCY</option><option value="keyword matched">Keyword matched</option><option value="xncr">XNCR</option>
         </select>
         <select id="filter-keyword">
           <option value="">All Keywords</option>
-          <option value="baff">BAFF</option><option value="copd">COPD</option><option value="giant cell arteritis">Giant cell arteritis</option><option value="hidradenitis suppurativa">Hidradenitis suppurativa</option><option value="il-17">IL-17</option><option value="il-33">IL-33</option><option value="systemic sclerosis">Systemic sclerosis</option>
+          <option value="baff">BAFF</option><option value="copd">COPD</option><option value="il-17">IL-17</option><option value="il-33">IL-33</option><option value="polymyalgia rheumatica">Polymyalgia rheumatica</option><option value="systemic sclerosis">Systemic sclerosis</option>
         </select>
         <select id="filter-source">
           <option value="">All Source Types</option>
-          <option value="Press Release">Press Release</option><option value="Scientific News">Scientific News</option><option value="Trade Publication">Trade Publication</option>
+          <option value="Press Release">Press Release</option><option value="Corporate Presentation">Corporate Presentation</option><option value="Scientific Publication">Scientific Publication</option><option value="ClinicalTrial Update">ClinicalTrial Update</option>
         </select>
         <input type="text" id="filter-search" placeholder="Search summaries...">
         <select id="filter-confidence">
@@ -97,14 +97,21 @@
       <div class="chart-label">Keyword matched</div>
       <div class="chart-bar-wrap">
         <div class="chart-bar" style="width:100%"></div>
-        <span class="chart-count">5</span>
+        <span class="chart-count">8</span>
       </div>
     </div>
     <div class="chart-row">
       <div class="chart-label">INCY</div>
       <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:40%"></div>
-        <span class="chart-count">2</span>
+        <div class="chart-bar" style="width:13%"></div>
+        <span class="chart-count">1</span>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">XNCR</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="width:13%"></div>
+        <span class="chart-count">1</span>
       </div>
     </div>
       </div>
@@ -114,109 +121,139 @@
       <div class="grid" id="card-grid">
         
     <div class="card"
-      data-competitors="keyword matched"
-      data-source="Press Release"
-      data-keywords="il-33|copd"
-      data-confidence="60">
-      <div class="card-header">
-        <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">IL-33</span><span class="keyword-tag">COPD</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
-      </div>
-      <p class="summary">AstraZeneca announced that its IL-33-targeting biologic tozorakimab met the primary endpoint in the Phase III MIRANDA trial, showing a statistically significant reduction in moderate-to-severe COPD exacerbations.</p>
-      <a class="source-link" href="https://www.pharmiweb.com/press-release/2026-04-22/third-positive-pivotal-phase-iii-clinical-trial-of-astrazeneca-s-il-33-targeting-biologic-further-demonstrates-its-benefits-in-copd" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-21 · pharmiweb.com</div>
-    </div>
-    <div class="card"
-      data-competitors="keyword matched"
-      data-source="Press Release"
-      data-keywords="hidradenitis suppurativa|il-17"
-      data-confidence="60">
-      <div class="card-header">
-        <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">Hidradenitis suppurativa</span><span class="keyword-tag">IL-17</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
-      </div>
-      <p class="summary">HKeybio launched the world's first non-human primate (NHP) model for Hidradenitis Suppurativa (HS), which is intended to facilitate more clinically relevant testing for drug candidates, including those targeting the IL-17 pathway.</p>
-      <a class="source-link" href="https://finance.yahoo.com/sectors/healthcare/articles/hkeybio-launches-worlds-first-nhp-123000729.html" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-21 · finance.yahoo.com</div>
-    </div>
-    <div class="card"
-      data-competitors="keyword matched"
-      data-source="Scientific News"
-      data-keywords="systemic sclerosis"
-      data-confidence="50">
-      <div class="card-header">
-        <span class="badge" style="background:#0891b2">Scientific News</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">Systemic sclerosis</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 50/100">Medium · 50</span>
-      </div>
-      <p class="summary">A new Australian study published on April 22 confirmed that male patients with systemic sclerosis (SSc) tend to have a worse prognosis compared to female patients.</p>
-      <a class="source-link" href="https://thelimbic.com/rheumatology/male-ssc-carries-worse-prognosis-aus-study-confirms/" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-21 · thelimbic.com</div>
-    </div>
-    <div class="card"
-      data-competitors="incy"
-      data-source="Trade Publication"
-      data-keywords="hidradenitis suppurativa|il-17"
-      data-confidence="50">
-      <div class="card-header">
-        <span class="badge" style="background:#6b7280">Trade Publication</span>
-        <span class="competitor-tag">INCY</span>
-        <span class="keyword-tag">Hidradenitis suppurativa</span><span class="keyword-tag">IL-17</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 50/100">Medium · 50</span>
-      </div>
-      <p class="summary">Dermatology Times published a journal digest discussing emerging therapies in Hidradenitis Suppurativa, noting the importance of maintenance therapy with IL-17 inhibitors and referencing ongoing progress in the HS pipeline (including Incyte's recent data).</p>
-      <a class="source-link" href="https://www.dermatologytimes.com/view/journal-digest-april-22-2026" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-21 · dermatologytimes.com</div>
-    </div>
-    <div class="card"
-      data-competitors="incy"
+      data-competitors="incy|xncr"
       data-source="Press Release"
       data-keywords=""
-      data-confidence="50">
+      data-confidence="85">
       <div class="card-header">
         <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">INCY</span>
+        <span class="competitor-tag">INCY</span><span class="competitor-tag">XNCR</span>
         
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 50/100">Medium · 50</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 85/100">High · 85</span>
       </div>
-      <p class="summary">Incyte announced full results from the Phase 3 frontMIND study evaluating tafasitamab in combination with R-CHOP in patients with previously untreated diffuse large B-cell lymphoma (DLBCL), to be presented at ASCO 2026.</p>
-      <a class="source-link" href="https://investor.incyte.com/press-releases" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-20 · incyte.com</div>
+      <p class="summary">Specialised Therapeutics announced that the Therapeutic Goods Administration (TGA) has registered Minjuvi (tafasitamab) for adult patients with relapsed or refractory follicular lymphoma in Australia. Incyte holds exclusive worldwide rights to develop and commercialize tafasitamab, which was licensed from Xencor.</p>
+      <a class="source-link" href="https://www.prnewswire.com/news-releases/minjuvi-tafasitamab-for-relapsed-or-refractory-follicular-lymphoma-approved-in-australia-302751394.html" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-22 · prnewswire.com</div>
     </div>
     <div class="card"
       data-competitors="keyword matched"
       data-source="Press Release"
-      data-keywords="baff"
-      data-confidence="50">
+      data-keywords="polymyalgia rheumatica|copd"
+      data-confidence="60">
       <div class="card-header">
         <span class="badge" style="background:#2563eb">Press Release</span>
         <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">BAFF</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 50/100">Medium · 50</span>
+        <span class="keyword-tag">Polymyalgia rheumatica</span><span class="keyword-tag">COPD</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
       </div>
-      <p class="summary">Jade Biosciences appointed Edward R. Conner as Chief Medical Officer and highlighted its pipeline, which includes JADE201, an anti-BAFF-R monoclonal antibody for autoimmune diseases.</p>
-      <a class="source-link" href="https://markets.businessinsider.com/news/stocks/jade-biosciences-appoints-edward-r-conner-m-d-as-chief-medical-officer-1036048037" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-20 · businessinsider.com</div>
+      <p class="summary">Sanofi reported its Q1 2026 financial results, showing double-digit sales growth. The company highlighted that Kevzara sales growth was primarily driven by increased use in Polymyalgia Rheumatica. The report also mentions the development of the pipeline in COPD, including AERIFY trials for Dupixent.</p>
+      <a class="source-link" href="https://www.sanofi.com/assets/dotcom/pressreleases/2026/2026-04-23-05-30-00-3279572-en.pdf" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-22 · sanofi.com</div>
     </div>
     <div class="card"
       data-competitors="keyword matched"
       data-source="Press Release"
-      data-keywords="giant cell arteritis"
-      data-confidence="50">
+      data-keywords="copd"
+      data-confidence="85">
       <div class="card-header">
         <span class="badge" style="background:#2563eb">Press Release</span>
         <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">Giant cell arteritis</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 50/100">Medium · 50</span>
+        <span class="keyword-tag">COPD</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 85/100">High · 85</span>
       </div>
-      <p class="summary">Celltrion announced the US commercial availability of AVTOZMA SC, a subcutaneous tocilizumab biosimilar, indicated for conditions including Giant Cell Arteritis (GCA).</p>
-      <a class="source-link" href="https://www.celltrion.com/en-us/company/media-center/press-release" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-20 · celltrion.com</div>
+      <p class="summary">ENA Respiratory announced the appointment of Melissa Faris to its Board of Directors. The company is partnered with the COPD Foundation for the clinical development of INNA-051 in COPD.</p>
+      <a class="source-link" href="https://www.globenewswire.com/news-release/2026/04/23/3279603/0/en/ena-respiratory-appoints-melissa-faris-to-board.html" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-22 · globenewswire.com</div>
+    </div>
+    <div class="card"
+      data-competitors="keyword matched"
+      data-source="Corporate Presentation"
+      data-keywords="il-33|copd"
+      data-confidence="40">
+      <div class="card-header">
+        <span class="badge" style="background:#6b7280">Corporate Presentation</span>
+        <span class="competitor-tag">Keyword matched</span>
+        <span class="keyword-tag">IL-33</span><span class="keyword-tag">COPD</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#dc26261a;color:#dc2626;border:1px solid #dc262640" title="Confidence score: 40/100">Low · 40</span>
+      </div>
+      <p class="summary">Roche's Q1 2026 results presentation highlights its pipeline candidate RG6981, an anti-TSLP:IL-33 bispecific antibody being developed for COPD and Asthma, with First Patient In (FPI) expected in Q1 2026.</p>
+      <a class="source-link" href="https://roche.com/irp260423-a.pdf" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-22 · roche.com</div>
+    </div>
+    <div class="card"
+      data-competitors="keyword matched"
+      data-source="Scientific Publication"
+      data-keywords="il-17"
+      data-confidence="85">
+      <div class="card-header">
+        <span class="badge" style="background:#6b7280">Scientific Publication</span>
+        <span class="competitor-tag">Keyword matched</span>
+        <span class="keyword-tag">IL-17</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 85/100">High · 85</span>
+      </div>
+      <p class="summary">A study published in PubMed describes the development of DNA aptamers that inhibit the binding to human interleukin-17A (IL-17A), a cytokine involved in inflammatory and autoimmune diseases.</p>
+      <a class="source-link" href="https://pubmed.ncbi.nlm.nih.gov/42017161/" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-22 · pubmed.ncbi.nlm.nih.gov</div>
+    </div>
+    <div class="card"
+      data-competitors="keyword matched"
+      data-source="Scientific Publication"
+      data-keywords="il-17|baff"
+      data-confidence="85">
+      <div class="card-header">
+        <span class="badge" style="background:#6b7280">Scientific Publication</span>
+        <span class="competitor-tag">Keyword matched</span>
+        <span class="keyword-tag">IL-17</span><span class="keyword-tag">BAFF</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 85/100">High · 85</span>
+      </div>
+      <p class="summary">Research titled 'Genetic Evidence Linking Immune Cell Subsets to Psoriatic Arthritis' identifies immune-mediated pathways involving the IL-23/IL-17 axis and BAFF-R (BAFF receptor) on IgD+CD24+ B-cell subsets.</p>
+      <a class="source-link" href="https://pubmed.ncbi.nlm.nih.gov/42016305/" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-22 · pubmed.ncbi.nlm.nih.gov</div>
+    </div>
+    <div class="card"
+      data-competitors="keyword matched"
+      data-source="ClinicalTrial Update"
+      data-keywords="systemic sclerosis"
+      data-confidence="65">
+      <div class="card-header">
+        <span class="badge" style="background:#6b7280">ClinicalTrial Update</span>
+        <span class="competitor-tag">Keyword matched</span>
+        <span class="keyword-tag">Systemic sclerosis</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 65/100">Medium · 65</span>
+      </div>
+      <p class="summary">A study investigating the safety of anti-CD19 CAR-T cell therapy in patients with systemic sclerosis (SSc) was updated on ClinicalTrials.gov.</p>
+      <a class="source-link" href="https://clinicaltrials.gov/study/NCT07544225" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-22 · clinicaltrials.gov</div>
+    </div>
+    <div class="card"
+      data-competitors="keyword matched"
+      data-source="ClinicalTrial Update"
+      data-keywords="systemic sclerosis"
+      data-confidence="65">
+      <div class="card-header">
+        <span class="badge" style="background:#6b7280">ClinicalTrial Update</span>
+        <span class="competitor-tag">Keyword matched</span>
+        <span class="keyword-tag">Systemic sclerosis</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 65/100">Medium · 65</span>
+      </div>
+      <p class="summary">An update was posted for the study 'Objective Assessment of Skin Damage Using ADHELASKIN in Systemic Sclerosis (SSc)', which clinically manifests as skin fibrosis.</p>
+      <a class="source-link" href="https://clinicaltrials.gov/study/NCT07543679" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-22 · clinicaltrials.gov</div>
+    </div>
+    <div class="card"
+      data-competitors="keyword matched"
+      data-source="ClinicalTrial Update"
+      data-keywords="copd"
+      data-confidence="65">
+      <div class="card-header">
+        <span class="badge" style="background:#6b7280">ClinicalTrial Update</span>
+        <span class="competitor-tag">Keyword matched</span>
+        <span class="keyword-tag">COPD</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 65/100">Medium · 65</span>
+      </div>
+      <p class="summary">ClinicalTrials.gov update for the study 'Enhanced COPD Management in Suspected Lung Cancer Patients', assessing early diagnosis and optimal treatment of COPD.</p>
+      <a class="source-link" href="https://clinicaltrials.gov/study/NCT07543601" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-22 · clinicaltrials.gov</div>
     </div>
       </div>
     </div>
@@ -234,7 +271,7 @@
 
   function updateCount() {
     const visible = [...cards].filter(c => !c.classList.contains('hidden')).length;
-    countEl.textContent = visible + ' of 7 findings';
+    countEl.textContent = visible + ' of 9 findings';
   }
 
   function applyFilters() {
