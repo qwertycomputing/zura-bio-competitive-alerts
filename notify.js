@@ -96,15 +96,15 @@ if (RESEND_API_KEY && ALERT_EMAIL) {
 
         <!-- Header -->
         <tr>
-          <td style="background:#000000;padding:28px 32px;">
-            <img src="https://zurabio.com/wp-content/uploads/zura-bio-white-logo.png" alt="Zura Bio" height="40" style="display:block;height:40px;width:auto;">
-            <p style="margin:14px 0 0;color:#ffffff;font-family:'Lato',Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.7;">Competitive Intelligence · Daily Briefing</p>
+          <td style="background:#ffffff;padding:28px 32px;border-bottom:3px solid #0052CC;">
+            <img src="https://zurabio.com/wp-content/uploads/zurabio-logo.png" alt="Zura Bio" height="40" style="display:block;height:40px;width:auto;">
+            <p style="margin:14px 0 0;color:#666666;font-family:'Lato',Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Competitive Intelligence · Daily Briefing</p>
           </td>
         </tr>
 
         <!-- Summary bar -->
         <tr>
-          <td style="background:#EB5B25;padding:14px 32px;">
+          <td style="background:#0052CC;padding:14px 32px;">
             <p style="margin:0;color:#ffffff;font-family:'Poppins',Arial,sans-serif;font-size:14px;font-weight:600;">
               ${findings.length} new finding${findings.length !== 1 ? 's' : ''} &nbsp;·&nbsp; ${uniqueCompetitors.length} competitor${uniqueCompetitors.length !== 1 ? 's' : ''} &nbsp;·&nbsp; ${runDate}
             </p>
@@ -119,7 +119,7 @@ if (RESEND_API_KEY && ALERT_EMAIL) {
             </p>
             <table cellpadding="0" cellspacing="0">
               <tr>
-                <td style="padding-right:12px;background:#EB5B25;border-radius:3px;">
+                <td style="padding-right:12px;background:#0052CC;border-radius:3px;">
                   <a href="${DASHBOARD_URL}" style="display:inline-block;color:#ffffff;text-decoration:none;font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:500;padding:10px 22px;">View Latest Report</a>
                 </td>
                 <td style="background:#ffffff;border-radius:3px;border:2px solid #000000;">
@@ -140,7 +140,7 @@ if (RESEND_API_KEY && ALERT_EMAIL) {
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td>
-                  <span style="display:inline-block;background:#EB5B25;color:#ffffff;font-family:'Poppins',Arial,sans-serif;font-size:10px;font-weight:600;padding:3px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:0.06em;">${(f.competitors ?? []).filter(c => c !== 'Keyword matched').join(', ') || 'Keyword match'}</span>
+                  <span style="display:inline-block;background:#0052CC;color:#ffffff;font-family:'Poppins',Arial,sans-serif;font-size:10px;font-weight:600;padding:3px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:0.06em;">${(f.competitors ?? []).filter(c => c !== 'Keyword matched').join(', ') || 'Keyword match'}</span>
                   ${f.keywords?.length ? `<span style="display:inline-block;background:#f4f4f4;color:#32373C;font-family:'Lato',Arial,sans-serif;font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;margin-left:6px;text-transform:uppercase;">${f.keywords.join(', ')}</span>` : ''}
                   <span style="display:inline-block;color:#999999;font-family:'Lato',Arial,sans-serif;font-size:10px;padding:3px 8px;border-radius:3px;margin-left:4px;border:1px solid #e0e0e0;">${f.source_type || 'Unknown'}</span>
                 </td>
@@ -150,7 +150,7 @@ if (RESEND_API_KEY && ALERT_EMAIL) {
               </tr>
               <tr>
                 <td style="padding-top:10px;">
-                  ${f.source_link ? `<a href="${f.source_link}" style="color:#EB5B25;font-family:'Poppins',Arial,sans-serif;font-size:12px;text-decoration:none;font-weight:600;">View Source →</a>` : ''}
+                  ${f.source_link ? `<a href="${f.source_link}" style="color:#0052CC;font-family:'Poppins',Arial,sans-serif;font-size:12px;text-decoration:none;font-weight:600;">View Source →</a>` : ''}
                   <span style="color:#999999;font-family:'Lato',Arial,sans-serif;font-size:12px;margin-left:12px;">${f.publication_date || ''}</span>
                 </td>
               </tr>
@@ -161,16 +161,16 @@ if (RESEND_API_KEY && ALERT_EMAIL) {
         ${findings.length > 10 ? `
         <tr>
           <td style="padding:16px 32px 24px;text-align:center;">
-            <a href="${DASHBOARD_URL}" style="color:#EB5B25;font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:600;text-decoration:none;">View all ${findings.length} findings →</a>
+            <a href="${DASHBOARD_URL}" style="color:#0052CC;font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:600;text-decoration:none;">View all ${findings.length} findings →</a>
           </td>
         </tr>` : ''}
 
         <!-- Footer -->
         <tr>
-          <td style="background:#000000;padding:20px 32px;">
+          <td style="background:#001F5B;padding:20px 32px;">
             <p style="margin:0;color:#666666;font-family:'Lato',Arial,sans-serif;font-size:12px;">
               Zura Bio Competitive Intelligence &nbsp;·&nbsp;
-              <a href="${DASHBOARD_URL}" style="color:#EB5B25;text-decoration:none;">ci.zurabio.com</a>
+              <a href="${DASHBOARD_URL}" style="color:#0052CC;text-decoration:none;">ci.zurabio.com</a>
             </p>
           </td>
         </tr>
