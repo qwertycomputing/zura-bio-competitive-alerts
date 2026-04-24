@@ -118,9 +118,7 @@ if (RESEND_API_KEY && ALERT_EMAIL) {
               Competitors: <strong style="color:#000000;">${uniqueCompetitors.slice(0, 6).join(', ')}${uniqueCompetitors.length > 6 ? ` +${uniqueCompetitors.length - 6} more` : ''}</strong>
             </p>
             <p style="margin:0;">
-              <a href="${DASHBOARD_URL}" style="color:#0052CC;font-family:'Poppins',Arial,sans-serif;font-size:14px;font-weight:700;text-decoration:none;">→ View Latest Report</a>
-              &nbsp;&nbsp;&nbsp;
-              <a href="${HISTORICAL_URL}" style="color:#0052CC;font-family:'Poppins',Arial,sans-serif;font-size:14px;font-weight:700;text-decoration:none;">→ Historical Dashboard</a>
+              <a href="${HISTORICAL_URL}" style="color:#0052CC;font-family:'Poppins',Arial,sans-serif;font-size:14px;font-weight:700;text-decoration:none;">📅 Historical Dashboard</a>
             </p>
           </td>
         </tr>
