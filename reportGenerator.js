@@ -76,61 +76,52 @@ export function generateReport(data, timestamp) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zura Bio — Competitive Intelligence Report</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Lato', Arial, sans-serif; background: #f4f4f4; color: #32373C; }
-  header { background: #000000; color: white; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0px 4px 12px rgba(0,0,0,0.24); }
-  header img { height: 36px; width: auto; display: block; padding: 18px 0; }
-  header .meta { font-family: 'Lato', Arial, sans-serif; font-size: 0.78rem; color: #999999; }
-  .accent-bar { background: #EB5B25; height: 4px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; }
+  header { background: #0f172a; color: white; padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; }
+  header h1 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
+  header .meta { font-size: 0.8rem; color: #94a3b8; }
   .container { max-width: 1400px; margin: 0 auto; padding: 32px 24px; }
   .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
-  .stat { background: white; border-radius: 3px; padding: 20px 24px; border: 1px solid #e0e0e0; border-top: 3px solid #EB5B25; }
-  .stat .num { font-family: 'Poppins', Arial, sans-serif; font-size: 2rem; font-weight: 700; color: #000000; }
-  .stat .label { font-size: 0.75rem; color: #666666; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stat { background: white; border-radius: 12px; padding: 20px 24px; border: 1px solid #e2e8f0; }
+  .stat .num { font-size: 2rem; font-weight: 800; color: #0f172a; }
+  .stat .label { font-size: 0.78rem; color: #64748b; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
   .layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
   .sidebar { position: sticky; top: 24px; height: fit-content; }
-  .mobile-filter-toggle { display: none; width: 100%; padding: 10px 16px; background: #000000; color: white; border: none; border-radius: 3px; font-family: 'Poppins', Arial, sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; margin-bottom: 16px; align-items: center; justify-content: center; gap: 8px; }
-  @media (max-width: 900px) {
-    .layout { grid-template-columns: 1fr; }
-    .sidebar { display: none; position: static; }
-    .sidebar.open { display: block; }
-    .mobile-filter-toggle { display: flex; }
-  }
-  .panel { background: white; border-radius: 3px; border: 1px solid #e0e0e0; padding: 20px; margin-bottom: 16px; }
-  .panel h3 { font-family: 'Poppins', Arial, sans-serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #000000; margin-bottom: 14px; }
-  select, input { width: 100%; padding: 8px 12px; border: 1px solid #e0e0e0; border-radius: 3px; font-family: 'Lato', Arial, sans-serif; font-size: 0.875rem; color: #32373C; background: #f4f4f4; margin-bottom: 10px; }
-  button { width: 100%; padding: 9px; border: 2px solid #000000; border-radius: 3px; background: #000000; color: white; font-family: 'Poppins', Arial, sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
-  button:hover { background: #EB5B25; border-color: #EB5B25; }
+  .panel { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 16px; }
+  .panel h3 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #64748b; margin-bottom: 14px; }
+  select, input { width: 100%; padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.875rem; color: #1e293b; background: #f8fafc; margin-bottom: 10px; }
+  button { width: 100%; padding: 9px; border: none; border-radius: 8px; background: #0f172a; color: white; font-size: 0.875rem; font-weight: 600; cursor: pointer; }
+  button:hover { background: #1e293b; }
   .chart-row { display: flex; align-items: center; margin-bottom: 8px; font-size: 0.8rem; }
-  .chart-label { width: 60px; flex-shrink: 0; font-weight: 700; color: #32373C; }
+  .chart-label { width: 60px; flex-shrink: 0; font-weight: 600; color: #475569; }
   .chart-bar-wrap { flex: 1; display: flex; align-items: center; gap: 8px; }
-  .chart-bar { height: 12px; background: #EB5B25; border-radius: 2px; min-width: 4px; }
-  .chart-count { color: #666666; font-size: 0.75rem; }
+  .chart-bar { height: 14px; background: linear-gradient(90deg, #3b82f6, #6366f1); border-radius: 4px; min-width: 4px; }
+  .chart-count { color: #64748b; font-size: 0.75rem; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
-  .card { background: white; border-radius: 3px; border: 1px solid #e0e0e0; border-left: 4px solid #EB5B25; padding: 18px 20px; transition: box-shadow 0.2s; }
-  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  .card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 18px 20px; transition: box-shadow 0.2s; }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
   .card-header { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
-  .badge { font-family: 'Poppins', Arial, sans-serif; font-size: 0.68rem; font-weight: 600; color: white; padding: 3px 9px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .competitor-tag { font-family: 'Poppins', Arial, sans-serif; font-size: 0.72rem; font-weight: 700; color: #ffffff; background: #000000; padding: 3px 9px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
-  .keyword-tag { font-family: 'Lato', Arial, sans-serif; font-size: 0.72rem; font-weight: 700; color: #EB5B25; background: #fff4f0; border: 1px solid #EB5B25; padding: 3px 9px; border-radius: 3px; }
-  .summary { font-size: 0.875rem; color: #32373C; line-height: 1.65; margin-bottom: 12px; }
-  .source-link { font-family: 'Poppins', Arial, sans-serif; font-size: 0.78rem; color: #EB5B25; text-decoration: none; font-weight: 600; }
+  .badge { font-size: 0.7rem; font-weight: 700; color: white; padding: 3px 9px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .competitor-tag { font-size: 0.78rem; font-weight: 700; color: #0f172a; background: #f1f5f9; padding: 3px 9px; border-radius: 100px; }
+  .keyword-tag { font-size: 0.75rem; color: #7c3aed; background: #ede9fe; padding: 3px 9px; border-radius: 100px; }
+  .summary { font-size: 0.875rem; color: #334155; line-height: 1.6; margin-bottom: 12px; }
+  .source-link { font-size: 0.8rem; color: #2563eb; text-decoration: none; font-weight: 500; }
   .source-link:hover { text-decoration: underline; }
-  .card-domain { font-size: 0.72rem; color: #999999; margin-top: 6px; }
-  .confidence-badge { font-family: 'Poppins', Arial, sans-serif; font-size: 0.68rem; font-weight: 700; padding: 3px 9px; border-radius: 3px; white-space: nowrap; }
+  .card-domain { font-size: 0.72rem; color: #94a3b8; margin-top: 6px; }
+  .confidence-badge { font-size: 0.7rem; font-weight: 700; padding: 3px 9px; border-radius: 100px; white-space: nowrap; }
   .hidden { display: none !important; }
-  #results-count { font-family: 'Lato', Arial, sans-serif; font-size: 0.85rem; color: #666666; margin-bottom: 16px; }
-  .no-results { text-align: center; padding: 60px; color: #999999; font-size: 0.95rem; grid-column: 1/-1; }
+  #results-count { font-size: 0.85rem; color: #64748b; margin-bottom: 16px; }
+  .no-results { text-align: center; padding: 60px; color: #94a3b8; font-size: 0.95rem; grid-column: 1/-1; }
 </style>
 </head>
 <body>
 <header>
-  <img src="https://zurabio.com/wp-content/uploads/zura-bio-white-logo.png" alt="Zura Bio">
+  <h1>Zura Bio — Competitive Intelligence</h1>
   <div class="meta">Generated ${runDate} &nbsp;|&nbsp; ${findings.length} findings</div>
 </header>
-<div class="accent-bar"></div>
 <div class="container">
   <div class="stats">
     <div class="stat"><div class="num">${findings.length}</div><div class="label">Total Findings</div></div>
@@ -140,9 +131,8 @@ export function generateReport(data, timestamp) {
     <div class="stat"><div class="num">${findings.filter(f => f.source_type?.toLowerCase().includes('clinical')).length}</div><div class="label">Clinical Trial Updates</div></div>
     <div class="stat"><div class="num">${findings.filter(f => f.source_type?.toLowerCase().includes('8-k') || f.source_type?.toLowerCase().includes('sec')).length}</div><div class="label">SEC Filings</div></div>
   </div>
-  <button class="mobile-filter-toggle" onclick="toggleFilters()" id="filter-toggle-btn">&#9776; Show Filters</button>
   <div class="layout">
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar">
       <div class="panel">
         <h3>Filter</h3>
         <select id="filter-competitor">
@@ -179,12 +169,6 @@ export function generateReport(data, timestamp) {
   </div>
 </div>
 <script>
-  function toggleFilters() {
-    const sidebar = document.getElementById('sidebar');
-    const btn = document.getElementById('filter-toggle-btn');
-    sidebar.classList.toggle('open');
-    btn.textContent = sidebar.classList.contains('open') ? '✕ Hide Filters' : '☰ Show Filters';
-  }
   const cards = document.querySelectorAll('.card');
   const countEl = document.getElementById('results-count');
 

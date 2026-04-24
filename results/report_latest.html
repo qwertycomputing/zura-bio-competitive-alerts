@@ -4,86 +4,76 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zura Bio — Competitive Intelligence Report</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Lato', Arial, sans-serif; background: #f4f4f4; color: #32373C; }
-  header { background: #000000; color: white; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0px 4px 12px rgba(0,0,0,0.24); }
-  header img { height: 36px; width: auto; display: block; padding: 18px 0; }
-  header .meta { font-family: 'Lato', Arial, sans-serif; font-size: 0.78rem; color: #999999; }
-  .accent-bar { background: #EB5B25; height: 4px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; }
+  header { background: #0f172a; color: white; padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; }
+  header h1 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
+  header .meta { font-size: 0.8rem; color: #94a3b8; }
   .container { max-width: 1400px; margin: 0 auto; padding: 32px 24px; }
   .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
-  .stat { background: white; border-radius: 3px; padding: 20px 24px; border: 1px solid #e0e0e0; border-top: 3px solid #EB5B25; }
-  .stat .num { font-family: 'Poppins', Arial, sans-serif; font-size: 2rem; font-weight: 700; color: #000000; }
-  .stat .label { font-size: 0.75rem; color: #666666; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stat { background: white; border-radius: 12px; padding: 20px 24px; border: 1px solid #e2e8f0; }
+  .stat .num { font-size: 2rem; font-weight: 800; color: #0f172a; }
+  .stat .label { font-size: 0.78rem; color: #64748b; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
   .layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
   .sidebar { position: sticky; top: 24px; height: fit-content; }
-  .mobile-filter-toggle { display: none; width: 100%; padding: 10px 16px; background: #000000; color: white; border: none; border-radius: 3px; font-family: 'Poppins', Arial, sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; margin-bottom: 16px; align-items: center; justify-content: center; gap: 8px; }
-  @media (max-width: 900px) {
-    .layout { grid-template-columns: 1fr; }
-    .sidebar { display: none; position: static; }
-    .sidebar.open { display: block; }
-    .mobile-filter-toggle { display: flex; }
-  }
-  .panel { background: white; border-radius: 3px; border: 1px solid #e0e0e0; padding: 20px; margin-bottom: 16px; }
-  .panel h3 { font-family: 'Poppins', Arial, sans-serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #000000; margin-bottom: 14px; }
-  select, input { width: 100%; padding: 8px 12px; border: 1px solid #e0e0e0; border-radius: 3px; font-family: 'Lato', Arial, sans-serif; font-size: 0.875rem; color: #32373C; background: #f4f4f4; margin-bottom: 10px; }
-  button { width: 100%; padding: 9px; border: 2px solid #000000; border-radius: 3px; background: #000000; color: white; font-family: 'Poppins', Arial, sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
-  button:hover { background: #EB5B25; border-color: #EB5B25; }
+  .panel { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 16px; }
+  .panel h3 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #64748b; margin-bottom: 14px; }
+  select, input { width: 100%; padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.875rem; color: #1e293b; background: #f8fafc; margin-bottom: 10px; }
+  button { width: 100%; padding: 9px; border: none; border-radius: 8px; background: #0f172a; color: white; font-size: 0.875rem; font-weight: 600; cursor: pointer; }
+  button:hover { background: #1e293b; }
   .chart-row { display: flex; align-items: center; margin-bottom: 8px; font-size: 0.8rem; }
-  .chart-label { width: 60px; flex-shrink: 0; font-weight: 700; color: #32373C; }
+  .chart-label { width: 60px; flex-shrink: 0; font-weight: 600; color: #475569; }
   .chart-bar-wrap { flex: 1; display: flex; align-items: center; gap: 8px; }
-  .chart-bar { height: 12px; background: #EB5B25; border-radius: 2px; min-width: 4px; }
-  .chart-count { color: #666666; font-size: 0.75rem; }
+  .chart-bar { height: 14px; background: linear-gradient(90deg, #3b82f6, #6366f1); border-radius: 4px; min-width: 4px; }
+  .chart-count { color: #64748b; font-size: 0.75rem; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
-  .card { background: white; border-radius: 3px; border: 1px solid #e0e0e0; border-left: 4px solid #EB5B25; padding: 18px 20px; transition: box-shadow 0.2s; }
-  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  .card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 18px 20px; transition: box-shadow 0.2s; }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
   .card-header { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
-  .badge { font-family: 'Poppins', Arial, sans-serif; font-size: 0.68rem; font-weight: 600; color: white; padding: 3px 9px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .competitor-tag { font-family: 'Poppins', Arial, sans-serif; font-size: 0.72rem; font-weight: 700; color: #ffffff; background: #000000; padding: 3px 9px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
-  .keyword-tag { font-family: 'Lato', Arial, sans-serif; font-size: 0.72rem; font-weight: 700; color: #EB5B25; background: #fff4f0; border: 1px solid #EB5B25; padding: 3px 9px; border-radius: 3px; }
-  .summary { font-size: 0.875rem; color: #32373C; line-height: 1.65; margin-bottom: 12px; }
-  .source-link { font-family: 'Poppins', Arial, sans-serif; font-size: 0.78rem; color: #EB5B25; text-decoration: none; font-weight: 600; }
+  .badge { font-size: 0.7rem; font-weight: 700; color: white; padding: 3px 9px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .competitor-tag { font-size: 0.78rem; font-weight: 700; color: #0f172a; background: #f1f5f9; padding: 3px 9px; border-radius: 100px; }
+  .keyword-tag { font-size: 0.75rem; color: #7c3aed; background: #ede9fe; padding: 3px 9px; border-radius: 100px; }
+  .summary { font-size: 0.875rem; color: #334155; line-height: 1.6; margin-bottom: 12px; }
+  .source-link { font-size: 0.8rem; color: #2563eb; text-decoration: none; font-weight: 500; }
   .source-link:hover { text-decoration: underline; }
-  .card-domain { font-size: 0.72rem; color: #999999; margin-top: 6px; }
-  .confidence-badge { font-family: 'Poppins', Arial, sans-serif; font-size: 0.68rem; font-weight: 700; padding: 3px 9px; border-radius: 3px; white-space: nowrap; }
+  .card-domain { font-size: 0.72rem; color: #94a3b8; margin-top: 6px; }
+  .confidence-badge { font-size: 0.7rem; font-weight: 700; padding: 3px 9px; border-radius: 100px; white-space: nowrap; }
   .hidden { display: none !important; }
-  #results-count { font-family: 'Lato', Arial, sans-serif; font-size: 0.85rem; color: #666666; margin-bottom: 16px; }
-  .no-results { text-align: center; padding: 60px; color: #999999; font-size: 0.95rem; grid-column: 1/-1; }
+  #results-count { font-size: 0.85rem; color: #64748b; margin-bottom: 16px; }
+  .no-results { text-align: center; padding: 60px; color: #94a3b8; font-size: 0.95rem; grid-column: 1/-1; }
 </style>
 </head>
 <body>
 <header>
-  <img src="https://zurabio.com/wp-content/uploads/zura-bio-white-logo.png" alt="Zura Bio">
-  <div class="meta">Generated 2026-04-24, 10:41:34 a.m. &nbsp;|&nbsp; 9 findings</div>
+  <h1>Zura Bio — Competitive Intelligence</h1>
+  <div class="meta">Generated 2026-04-24, 10:51:16 a.m. &nbsp;|&nbsp; 9 findings</div>
 </header>
-<div class="accent-bar"></div>
 <div class="container">
   <div class="stats">
     <div class="stat"><div class="num">9</div><div class="label">Total Findings</div></div>
-    <div class="stat"><div class="num">5</div><div class="label">Competitors Detected</div></div>
-    <div class="stat"><div class="num">7</div><div class="label">Keywords Matched</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">Competitors Detected</div></div>
+    <div class="stat"><div class="num">3</div><div class="label">Keywords Matched</div></div>
     <div class="stat"><div class="num">0</div><div class="label">PubMed Publications</div></div>
-    <div class="stat"><div class="num">1</div><div class="label">Clinical Trial Updates</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">Clinical Trial Updates</div></div>
     <div class="stat"><div class="num">0</div><div class="label">SEC Filings</div></div>
   </div>
-  <button class="mobile-filter-toggle" onclick="toggleFilters()" id="filter-toggle-btn">&#9776; Show Filters</button>
   <div class="layout">
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar">
       <div class="panel">
         <h3>Filter</h3>
         <select id="filter-competitor">
           <option value="">All Competitors</option>
-          <option value="alms">ALMS</option><option value="candid">Candid</option><option value="glue">GLUE</option><option value="kymr">KYMR</option><option value="keyword matched">Keyword matched</option><option value="ucb">UCB</option>
+          <option value="anab">ANAB</option><option value="glue">GLUE</option><option value="incy">INCY</option><option value="knsa">KNSA</option><option value="keyword matched">Keyword matched</option><option value="orka">ORKA</option><option value="ucb">UCB</option>
         </select>
         <select id="filter-keyword">
           <option value="">All Keywords</option>
-          <option value="copd">COPD</option><option value="giant cell arteritis">Giant cell arteritis</option><option value="hidradenitis suppurativa">Hidradenitis suppurativa</option><option value="il-17">IL-17</option><option value="il-33">IL-33</option><option value="polymyalgia rheumatica">Polymyalgia rheumatica</option><option value="systemic sclerosis">Systemic sclerosis</option>
+          <option value="copd">COPD</option><option value="hidradenitis suppurativa">Hidradenitis suppurativa</option><option value="il-33">IL-33</option>
         </select>
         <select id="filter-source">
           <option value="">All Source Types</option>
-          <option value="Press Release">Press Release</option><option value="Clinical Trial Update">Clinical Trial Update</option><option value="Publication">Publication</option>
+          <option value="Press Release">Press Release</option><option value="Scientific Publication">Scientific Publication</option><option value="News Article">News Article</option>
         </select>
         <input type="text" id="filter-search" placeholder="Search summaries...">
         <select id="filter-confidence">
@@ -97,44 +87,51 @@
         <h3>Findings by Competitor</h3>
         
     <div class="chart-row">
-      <div class="chart-label">Keyword matched</div>
-      <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:100%"></div>
-        <span class="chart-count">4</span>
-      </div>
-    </div>
-    <div class="chart-row">
       <div class="chart-label">GLUE</div>
       <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:50%"></div>
+        <div class="chart-bar" style="width:100%"></div>
         <span class="chart-count">2</span>
-      </div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">Candid</div>
-      <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:25%"></div>
-        <span class="chart-count">1</span>
-      </div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">KYMR</div>
-      <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:25%"></div>
-        <span class="chart-count">1</span>
-      </div>
-    </div>
-    <div class="chart-row">
-      <div class="chart-label">ALMS</div>
-      <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:25%"></div>
-        <span class="chart-count">1</span>
       </div>
     </div>
     <div class="chart-row">
       <div class="chart-label">UCB</div>
       <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:25%"></div>
+        <div class="chart-bar" style="width:100%"></div>
+        <span class="chart-count">2</span>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">Keyword matched</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="width:100%"></div>
+        <span class="chart-count">2</span>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">INCY</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="width:50%"></div>
+        <span class="chart-count">1</span>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">ORKA</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="width:50%"></div>
+        <span class="chart-count">1</span>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">ANAB</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="width:50%"></div>
+        <span class="chart-count">1</span>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">KNSA</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="width:50%"></div>
         <span class="chart-count">1</span>
       </div>
     </div>
@@ -145,151 +142,145 @@
       <div class="grid" id="card-grid">
         
     <div class="card"
-      data-competitors="keyword matched"
-      data-source="Press Release"
-      data-keywords="copd|il-33"
-      data-confidence="60">
-      <div class="card-header">
-        <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">COPD</span><span class="keyword-tag">IL-33</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
-      </div>
-      <p class="summary">AstraZeneca reported that its IL-33 inhibitor reached primary endpoints in a third Phase III clinical trial for COPD, demonstrating significant benefits for patients.</p>
-      <a class="source-link" href="https://www.yahoo.com/news/articles/astrazeneca-copd-drug-gains-third-103024183.html" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-23 · yahoo.com</div>
-    </div>
-    <div class="card"
-      data-competitors="candid"
-      data-source="Press Release"
-      data-keywords=""
-      data-confidence="60">
-      <div class="card-header">
-        <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">Candid</span>
-        
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
-      </div>
-      <p class="summary">Candid Therapeutics advanced its portfolio of novel T-cell engagers into clinical evaluation across five autoimmune diseases based on positive clinical data.</p>
-      <a class="source-link" href="https://www.biospace.com/press-releases/candid-therapeutics-advances-portfolio-of-novel-t-cell-engagers-into-five-autoimmune-diseases-for-clinical-evaluation" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-23 · biospace.com</div>
-    </div>
-    <div class="card"
-      data-competitors="keyword matched"
-      data-source="Press Release"
-      data-keywords="il-17"
-      data-confidence="60">
-      <div class="card-header">
-        <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">IL-17</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
-      </div>
-      <p class="summary">Scinai Immunotherapeutics secured $2.61 million to fund its immunology pipeline, focusing on its IL-17 directed therapies.</p>
-      <a class="source-link" href="https://www.scinai.com/press-releases/scinai-immunotherapeutics-announces-261-million-private-placement-financing" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-23 · scinai.com</div>
-    </div>
-    <div class="card"
-      data-competitors="keyword matched"
-      data-source="Press Release"
-      data-keywords="systemic sclerosis|systemic sclerosis"
-      data-confidence="60">
-      <div class="card-header">
-        <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">Systemic sclerosis</span><span class="keyword-tag">Systemic sclerosis</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
-      </div>
-      <p class="summary">AbbVie's Rinvoq received EMA Orphan Drug Designation for Systemic Sclerosis, marking a milestone in its development for fibrotic diseases.</p>
-      <a class="source-link" href="https://allsci.com/news/orphan-drug-designations/abbvies-rinvoq-secures-ema-orphan-drug-designation-for-systemic-sclerosis/" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-23 · allsci.com</div>
-    </div>
-    <div class="card"
-      data-competitors="kymr|glue"
-      data-source="Press Release"
-      data-keywords=""
-      data-confidence="50">
-      <div class="card-header">
-        <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">KYMR</span><span class="competitor-tag">GLUE</span>
-        
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 50/100">Medium · 50</span>
-      </div>
-      <p class="summary">Gilead Sciences exercised its option to license Kymera's CDK2 molecular glue degrader KT-200, resulting in a $45 million payment to Kymera.</p>
-      <a class="source-link" href="https://www.biospace.com/press-releases/kymera-therapeutics-announces-gilead-sciences-option-exercise-to-license-kt-200-oral-cdk2-molecular-glue-degrader-development-candidate" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-22 · biospace.com</div>
-    </div>
-    <div class="card"
       data-competitors="glue"
       data-source="Press Release"
       data-keywords=""
-      data-confidence="50">
+      data-confidence="85">
       <div class="card-header">
         <span class="badge" style="background:#2563eb">Press Release</span>
         <span class="competitor-tag">GLUE</span>
         
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 50/100">Medium · 50</span>
-      </div>
-      <p class="summary">Monte Rosa Therapeutics reached a supply agreement with J&J to support a Phase 2 trial of its GSPT1-directed molecular glue degrader MRT-2359.</p>
-      <a class="source-link" href="https://www.rttnews.com/3631113/monte-rosa-signs-supply-agreement-with-jnj-for-phase-2-prostate-cancer-study-stock-up.aspx" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-22 · rttnews.com</div>
-    </div>
-    <div class="card"
-      data-competitors="alms"
-      data-source="Clinical Trial Update"
-      data-keywords="hidradenitis suppurativa|hidradenitis suppurativa"
-      data-confidence="85">
-      <div class="card-header">
-        <span class="badge" style="background:#9333ea">Clinical Trial Update</span>
-        <span class="competitor-tag">ALMS</span>
-        <span class="keyword-tag">Hidradenitis suppurativa</span><span class="keyword-tag">Hidradenitis suppurativa</span>
         <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 85/100">High · 85</span>
       </div>
-      <p class="summary">Almirall updated the clinical trial record for NCT07547813, a Phase 2 study evaluating LAD328 in adults with moderate-to-severe Hidradenitis Suppurativa.</p>
-      <a class="source-link" href="https://clinicaltrials.gov/study/NCT07547813" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-22 · clinicaltrials.gov</div>
+      <p class="summary">Amphista Therapeutics announced presentation of new preclinical data from its SMARCA2 and TEAD-targeted glue degrader programs at the AACR 2026 Annual Meeting and publication of its first data on Glue™ degraders.</p>
+      <a class="source-link" href="https://www.globenewswire.com/news-release/2026/04/24/3280718/0/en/amphista-therapeutics-announces-presentation-of-new-preclinical-data-from-its-smarca2-and-tead-targeted-glue-degrader-programs-at-aacr-2026-and-publication-of-the-first-data-on-its.html" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-23 · globenewswire.com</div>
     </div>
     <div class="card"
-      data-competitors="keyword matched"
-      data-source="Publication"
-      data-keywords="polymyalgia rheumatica|polymyalgia rheumatica|giant cell arteritis|giant cell arteritis"
-      data-confidence="55">
+      data-competitors="incy"
+      data-source="Press Release"
+      data-keywords=""
+      data-confidence="60">
       <div class="card-header">
-        <span class="badge" style="background:#6b7280">Publication</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">Polymyalgia rheumatica</span><span class="keyword-tag">Polymyalgia rheumatica</span><span class="keyword-tag">Giant cell arteritis</span><span class="keyword-tag">Giant cell arteritis</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 55/100">Medium · 55</span>
+        <span class="badge" style="background:#2563eb">Press Release</span>
+        <span class="competitor-tag">INCY</span>
+        
+        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
       </div>
-      <p class="summary">A new study comparing FAPI and FDG-PET imaging for PMR and GCA was indexed on PubMed, providing prospective evidence for imaging in vasculitis.</p>
-      <a class="source-link" href="https://pubmed.ncbi.nlm.nih.gov/42020812/" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-22 · pubmed.ncbi.nlm.nih.gov</div>
+      <p class="summary">Incyte announced new Phase 3 data for tafasitamab at the 2026 ASCO Annual Meeting, demonstrating progress in its oncology pipeline.</p>
+      <a class="source-link" href="https://www.finanznachrichten.de/nachrichten-2026-04/68266753-incyte-praesentiert-neue-phase-3-daten-zu-tafasitamab-auf-der-jahrestagung-2026-der-american-society-of-clinical-oncology-asco-004.htm" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-23 · finanznachrichten.de</div>
     </div>
     <div class="card"
       data-competitors="ucb"
       data-source="Press Release"
       data-keywords=""
-      data-confidence="50">
+      data-confidence="60">
       <div class="card-header">
         <span class="badge" style="background:#2563eb">Press Release</span>
         <span class="competitor-tag">UCB</span>
         
+        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
+      </div>
+      <p class="summary">UCB announced the acquisition of Neurona Therapeutics and its lead candidate for the treatment of drug-resistant focal epilepsy.</p>
+      <a class="source-link" href="https://novapharmanews.com/us/category/neurology" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-23 · novapharmanews.com</div>
+    </div>
+    <div class="card"
+      data-competitors="glue|orka"
+      data-source="Press Release"
+      data-keywords=""
+      data-confidence="60">
+      <div class="card-header">
+        <span class="badge" style="background:#2563eb">Press Release</span>
+        <span class="competitor-tag">GLUE</span><span class="competitor-tag">ORKA</span>
+        
+        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
+      </div>
+      <p class="summary">BB Biotech's Q1 2026 report highlights its active portfolio repositioning, including investments in Monte Rosa Therapeutics (GLUE) and Oruka Therapeutics (ORKA).</p>
+      <a class="source-link" href="https://www.eqs-news.com/news/corporate-news/bb-biotech-q1-2026-share-price-outperformance-narrowing-discount-and-active-portfolio-repositioning/dbfc5ceb-f9e2-4722-8b2f-98450252c68a_en" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-23 · eqs-news.com</div>
+    </div>
+    <div class="card"
+      data-competitors="anab"
+      data-source="Press Release"
+      data-keywords=""
+      data-confidence="60">
+      <div class="card-header">
+        <span class="badge" style="background:#2563eb">Press Release</span>
+        <span class="competitor-tag">ANAB</span>
+        
+        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
+      </div>
+      <p class="summary">AnaptysBio, Inc. announced an agreement with Roche to develop novel antibodies.</p>
+      <a class="source-link" href="https://www.biospace.com/anaptysbio-inc-announces-agreement-with-roche-to-develop-novel-antibodies" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-23 · biospace.com</div>
+    </div>
+    <div class="card"
+      data-competitors="keyword matched"
+      data-source="Scientific Publication"
+      data-keywords="copd"
+      data-confidence="85">
+      <div class="card-header">
+        <span class="badge" style="background:#6b7280">Scientific Publication</span>
+        <span class="competitor-tag">Keyword matched</span>
+        <span class="keyword-tag">COPD</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 85/100">High · 85</span>
+      </div>
+      <p class="summary">A study in the Journal of Ethnopharmacology reports that the Bufei formula attenuates airway mucus hypersecretion in COPD by inhibiting TRIM56-mediated ITGB4 ubiquitination.</p>
+      <a class="source-link" href="https://pubmed.ncbi.nlm.nih.gov/41580166/" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-23 · pubmed.ncbi.nlm.nih.gov</div>
+    </div>
+    <div class="card"
+      data-competitors="keyword matched"
+      data-source="News Article"
+      data-keywords="copd|il-33"
+      data-confidence="50">
+      <div class="card-header">
+        <span class="badge" style="background:#0891b2">News Article</span>
+        <span class="competitor-tag">Keyword matched</span>
+        <span class="keyword-tag">COPD</span><span class="keyword-tag">IL-33</span>
         <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 50/100">Medium · 50</span>
       </div>
-      <p class="summary">UCB announced a $1.1 billion collaboration with Antengene to develop a bispecific T-cell engager for autoimmune indications.</p>
-      <a class="source-link" href="https://www.bioworld.com/articles/729298-ucb-inks-11b-deal-for-antengenes-autoimmune-bispecific-tce" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-22 · bioworld.com</div>
+      <p class="summary">Tozorakimab, targeting the IL-33 pathway, reduces COPD exacerbations as shown in Phase 3 trials.</p>
+      <a class="source-link" href="https://www.patientcareonline.com/view/q-a-tozorakimab-reduces-copd-exacerbations-in-phase-3-oberon-and-titania-trials" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-23 · patientcareonline.com</div>
+    </div>
+    <div class="card"
+      data-competitors="ucb"
+      data-source="Scientific Publication"
+      data-keywords="hidradenitis suppurativa|hidradenitis suppurativa"
+      data-confidence="70">
+      <div class="card-header">
+        <span class="badge" style="background:#6b7280">Scientific Publication</span>
+        <span class="competitor-tag">UCB</span>
+        <span class="keyword-tag">Hidradenitis suppurativa</span><span class="keyword-tag">Hidradenitis suppurativa</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 70/100">High · 70</span>
+      </div>
+      <p class="summary">A publication discussing the postmarketing safety of bimekizumab for the treatment of hidradenitis suppurativa (HS).</p>
+      <a class="source-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13069420/" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-23 · pmc.ncbi.nlm.nih.gov</div>
+    </div>
+    <div class="card"
+      data-competitors="knsa"
+      data-source="Press Release"
+      data-keywords=""
+      data-confidence="60">
+      <div class="card-header">
+        <span class="badge" style="background:#2563eb">Press Release</span>
+        <span class="competitor-tag">KNSA</span>
+        
+        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
+      </div>
+      <p class="summary">Kiniksa Pharmaceuticals announced it will report first quarter 2026 financial results on April 28, 2026.</p>
+      <a class="source-link" href="https://www.biospace.com/press-releases/kiniksa-pharmaceuticals-to-report-first-quarter-2026-financial-results-on-april-28-2026" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-23 · biospace.com</div>
     </div>
       </div>
     </div>
   </div>
 </div>
 <script>
-  function toggleFilters() {
-    const sidebar = document.getElementById('sidebar');
-    const btn = document.getElementById('filter-toggle-btn');
-    sidebar.classList.toggle('open');
-    btn.textContent = sidebar.classList.contains('open') ? '✕ Hide Filters' : '☰ Show Filters';
-  }
   const cards = document.querySelectorAll('.card');
   const countEl = document.getElementById('results-count');
 
