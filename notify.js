@@ -117,16 +117,11 @@ if (RESEND_API_KEY && ALERT_EMAIL) {
             <p style="margin:0 0 14px;font-family:'Lato',Arial,sans-serif;font-size:13px;color:#666666;">
               Competitors: <strong style="color:#000000;">${uniqueCompetitors.slice(0, 6).join(', ')}${uniqueCompetitors.length > 6 ? ` +${uniqueCompetitors.length - 6} more` : ''}</strong>
             </p>
-            <table cellpadding="0" cellspacing="0">
-              <tr>
-                <td style="padding-right:12px;background:#0052CC;border-radius:3px;">
-                  <a href="${DASHBOARD_URL}" style="display:inline-block;color:#ffffff;text-decoration:none;font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:500;padding:10px 22px;">View Latest Report</a>
-                </td>
-                <td style="background:#ffffff;border-radius:3px;border:2px solid #000000;">
-                  <a href="${HISTORICAL_URL}" style="display:inline-block;color:#000000;text-decoration:none;font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:500;padding:10px 22px;">Historical Dashboard</a>
-                </td>
-              </tr>
-            </table>
+            <p style="margin:0;">
+              <a href="${DASHBOARD_URL}" style="color:#0052CC;font-family:'Poppins',Arial,sans-serif;font-size:14px;font-weight:700;text-decoration:none;">→ View Latest Report</a>
+              &nbsp;&nbsp;&nbsp;
+              <a href="${HISTORICAL_URL}" style="color:#0052CC;font-family:'Poppins',Arial,sans-serif;font-size:14px;font-weight:700;text-decoration:none;">→ Historical Dashboard</a>
+            </p>
           </td>
         </tr>
 
