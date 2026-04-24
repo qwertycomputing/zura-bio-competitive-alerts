@@ -26,9 +26,30 @@ export const TRUSTED_DOMAINS = [
   'endpoints11.com', 'evaluate.com', 'nature.com', 'nejm.org', 'thelancet.com',
   // Medical/scientific
   'jamanetwork.com', 'bmj.com', 'annrheumdis.bmj.com', 'aad.org', 'eadv.org',
-  // Company IR pages (add more as needed)
-  'ir.avalotx.com', 'ir.moonlaketx.com', 'ir.incyte.com', 'investor.incyte.com',
-  'ucb.com', 'insmed.com', 'aclaristx.com', 'anaptysbio.com',
+  // Company IR pages & main domains
+  'ir.avalotx.com', 'avalotx.com',                          // AVTX
+  'ir.moonlaketx.com', 'moonlaketx.com',                    // MLTX
+  'ir.incyte.com', 'investor.incyte.com', 'incyte.com',     // INCY
+  'ucb.com',                                                 // UCB
+  'insmed.com',                                              // INSM
+  'aclaristx.com',                                           // ACRS
+  'anaptysbio.com', 'ir.anaptysbio.com',                    // ANAB
+  'kymeratx.com', 'ir.kymeratx.com',                        // KYMR
+  'monterosatx.com', 'ir.monterosatx.com',                  // GLUE
+  'inflarx.com', 'ir.inflarx.com',                          // IFRX
+  'nkarta.com', 'ir.nkarta.com',                            // NKTX
+  'xencor.com', 'ir.xencor.com',                            // XNCR
+  'kiniksa.com', 'ir.kiniksa.com',                          // KNSA
+  'veratx.com', 'ir.veratx.com',                            // VERA
+  'vorbiopharma.com', 'ir.vorbiopharma.com',                // VOR
+  'glpg.com', 'galapagos.com', 'ir.glpg.com',              // GLPG
+  'alumis.com', 'ir.alumis.com',                            // ALMS
+  'orukatx.com', 'ir.orukatx.com',                          // ORKA - Oruka Therapeutics
+  'cullinantherapeutics.com', 'investors.cullinantherapeutics.com', // CGEM - Cullinan Therapeutics
+  'q32bio.com', 'ir.q32bio.com',                            // QTTB - Q32 Bio
+  'candidrx.com',                                           // Candid Therapeutics (private)
+  'roche.com', 'ir.roche.com',                              // Roche (frequent finding)
+  'astrazeneca.com', 'ir.astrazeneca.com',                  // AZN (frequent finding)
 ];
 
 // Source type quality tiers — used in confidence scoring
