@@ -11,6 +11,6 @@ if %errorlevel% equ 0 (
 "C:\Program Files\nodejs\node.exe" historical.js >> results\run.log 2>&1
 
 :: Commit and push updated HTML to GitHub
-git add results/report_latest.html results/historical.html results/credit-calculator.html >> results\run.log 2>&1
+git add results/report_latest.html results/historical.html results/credit-calculator.html results/CNAME >> results\run.log 2>&1
 git commit -m "Daily scan %date% %time%" >> results\run.log 2>&1
 git push origin main >> results\run.log 2>&1
