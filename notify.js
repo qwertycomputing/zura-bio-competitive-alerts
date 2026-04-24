@@ -98,7 +98,7 @@ if (RESEND_API_KEY && ALERT_EMAIL) {
         <tr>
           <td style="background:#000000;padding:28px 32px;">
             <img src="https://zurabio.com/wp-content/uploads/zura-bio-white-logo.png" alt="Zura Bio" height="40" style="display:block;height:40px;width:auto;">
-            <p style="margin:14px 0 0;color:#999999;font-family:'Lato',Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Competitive Intelligence · Daily Briefing</p>
+            <p style="margin:14px 0 0;color:#ffffff;font-family:'Lato',Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.7;">Competitive Intelligence · Daily Briefing</p>
           </td>
         </tr>
 
@@ -119,11 +119,11 @@ if (RESEND_API_KEY && ALERT_EMAIL) {
             </p>
             <table cellpadding="0" cellspacing="0">
               <tr>
-                <td style="padding-right:12px;">
-                  <a href="${DASHBOARD_URL}" style="display:inline-block;background:#EB5B25;color:#ffffff;text-decoration:none;font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:500;padding:10px 22px;border-radius:3px;">View Latest Report</a>
+                <td style="padding-right:12px;background:#EB5B25;border-radius:3px;">
+                  <a href="${DASHBOARD_URL}" style="display:inline-block;color:#ffffff;text-decoration:none;font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:500;padding:10px 22px;">View Latest Report</a>
                 </td>
-                <td>
-                  <a href="${HISTORICAL_URL}" style="display:inline-block;background:#ffffff;color:#000000;text-decoration:none;font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:500;padding:10px 22px;border-radius:3px;border:2px solid #000000;">Historical Dashboard</a>
+                <td style="background:#ffffff;border-radius:3px;border:2px solid #000000;">
+                  <a href="${HISTORICAL_URL}" style="display:inline-block;color:#000000;text-decoration:none;font-family:'Poppins',Arial,sans-serif;font-size:13px;font-weight:500;padding:10px 22px;">Historical Dashboard</a>
                 </td>
               </tr>
             </table>
