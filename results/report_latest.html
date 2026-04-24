@@ -43,12 +43,17 @@
   .hidden { display: none !important; }
   #results-count { font-size: 0.85rem; color: #64748b; margin-bottom: 16px; }
   .no-results { text-align: center; padding: 60px; color: #94a3b8; font-size: 0.95rem; grid-column: 1/-1; }
+  .help-icon { display: inline-flex; align-items: center; justify-content: center; width: 15px; height: 15px; border-radius: 50%; background: #94a3b8; color: white; font-size: 0.6rem; font-weight: 700; cursor: help; position: relative; margin-left: 5px; vertical-align: middle; }
+  .help-icon .tooltip { display: none; position: absolute; left: 20px; top: -8px; width: 220px; background: #0f172a; color: #e2e8f0; font-size: 0.72rem; font-weight: 400; line-height: 1.6; padding: 10px 12px; border-radius: 8px; z-index: 100; white-space: normal; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+  .help-icon:hover .tooltip { display: block; }
+  .help-icon .tooltip b { color: #ffffff; }
+  .help-icon .tooltip hr { border: none; border-top: 1px solid #334155; margin: 6px 0; }
 </style>
 </head>
 <body>
 <header>
   <h1>Zura Bio — Competitive Intelligence</h1>
-  <div class="meta">Generated 2026-04-24, 10:51:16 a.m. &nbsp;|&nbsp; 9 findings</div>
+  <div class="meta">Generated 2026-04-24, 10:55:05 a.m. &nbsp;|&nbsp; 9 findings</div>
 </header>
 <div class="container">
   <div class="stats">
@@ -76,6 +81,24 @@
           <option value="Press Release">Press Release</option><option value="Scientific Publication">Scientific Publication</option><option value="News Article">News Article</option>
         </select>
         <input type="text" id="filter-search" placeholder="Search summaries...">
+        <div style="display:flex;align-items:center;margin-bottom:6px;">
+          <label style="font-size:0.78rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;">Confidence</label>
+          <span class="help-icon">?<span class="tooltip">
+            <b>Confidence Score (0–100)</b><hr>
+            <b>Domain trust</b> — up to 40 pts<br>
+            Trusted (SEC, PubMed, competitor IR) = +40<br>
+            Unknown = +15 &nbsp;·&nbsp; Blocked = −20<hr>
+            <b>Source type</b> — up to 30 pts<br>
+            SEC 8-K / Filing = 30<br>
+            Press Release / Clinical Trial = 25<br>
+            Conference / Presentation = 20<br>
+            News Article = 15 &nbsp;·&nbsp; Analyst = 10<hr>
+            <b>Recency</b> — up to 20 pts<br>
+            Today = +20 &nbsp;·&nbsp; This month = +10 &nbsp;·&nbsp; Older = +5<hr>
+            <b>Both signals</b> — 10 pts<br>
+            Competitor + keyword matched together
+          </span></span>
+        </div>
         <select id="filter-confidence">
           <option value="0">All Confidence Levels</option>
           <option value="70">High only (70+)</option>
