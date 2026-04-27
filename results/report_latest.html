@@ -53,12 +53,12 @@
 <body>
 <header>
   <h1>Zura Bio — Competitive Intelligence</h1>
-  <div class="meta">Generated 2026-04-25, 7:03:14 a.m. &nbsp;|&nbsp; 7 findings</div>
+  <div class="meta">Generated 2026-04-27, 9:17:15 a.m. &nbsp;|&nbsp; 7 findings</div>
 </header>
 <div class="container">
   <div class="stats">
     <div class="stat"><div class="num">7</div><div class="label">Total Findings</div></div>
-    <div class="stat"><div class="num">3</div><div class="label">Competitors Detected</div></div>
+    <div class="stat"><div class="num">5</div><div class="label">Competitors Detected</div></div>
     <div class="stat"><div class="num">4</div><div class="label">Keywords Matched</div></div>
     <div class="stat"><div class="num">0</div><div class="label">PubMed Publications</div></div>
     <div class="stat"><div class="num">0</div><div class="label">Clinical Trial Updates</div></div>
@@ -70,7 +70,7 @@
         <h3>Filter</h3>
         <select id="filter-competitor">
           <option value="">All Competitors</option>
-          <option value="anab">ANAB</option><option value="insm">INSM</option><option value="keyword matched">Keyword matched</option><option value="ucb">UCB</option>
+          <option value="incy">INCY</option><option value="insm">INSM</option><option value="kymr">KYMR</option><option value="keyword matched">Keyword matched</option><option value="orka">ORKA</option><option value="ucb">UCB</option>
         </select>
         <select id="filter-keyword">
           <option value="">All Keywords</option>
@@ -78,7 +78,7 @@
         </select>
         <select id="filter-source">
           <option value="">All Source Types</option>
-          <option value="Market News">Market News</option><option value="Press Release">Press Release</option><option value="Scientific Publication">Scientific Publication</option>
+          <option value="Press Release">Press Release</option><option value="Scientific Publication">Scientific Publication</option><option value="News Article">News Article</option><option value="Financial News">Financial News</option>
         </select>
         <input type="text" id="filter-search" placeholder="Search summaries...">
         <div style="display:flex;align-items:center;margin-bottom:6px;">
@@ -110,30 +110,44 @@
         <h3>Findings by Competitor</h3>
         
     <div class="chart-row">
+      <div class="chart-label">UCB</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="width:100%"></div>
+        <span class="chart-count">2</span>
+      </div>
+    </div>
+    <div class="chart-row">
       <div class="chart-label">Keyword matched</div>
       <div class="chart-bar-wrap">
         <div class="chart-bar" style="width:100%"></div>
-        <span class="chart-count">4</span>
+        <span class="chart-count">2</span>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">ORKA</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="width:50%"></div>
+        <span class="chart-count">1</span>
       </div>
     </div>
     <div class="chart-row">
       <div class="chart-label">INSM</div>
       <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:25%"></div>
+        <div class="chart-bar" style="width:50%"></div>
         <span class="chart-count">1</span>
       </div>
     </div>
     <div class="chart-row">
-      <div class="chart-label">ANAB</div>
+      <div class="chart-label">INCY</div>
       <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:25%"></div>
+        <div class="chart-bar" style="width:50%"></div>
         <span class="chart-count">1</span>
       </div>
     </div>
     <div class="chart-row">
-      <div class="chart-label">UCB</div>
+      <div class="chart-label">KYMR</div>
       <div class="chart-bar-wrap">
-        <div class="chart-bar" style="width:25%"></div>
+        <div class="chart-bar" style="width:50%"></div>
         <span class="chart-count">1</span>
       </div>
     </div>
@@ -144,109 +158,109 @@
       <div class="grid" id="card-grid">
         
     <div class="card"
-      data-competitors="insm"
-      data-source="Market News"
-      data-keywords="hidradenitis suppurativa"
-      data-confidence="50">
-      <div class="card-header">
-        <span class="badge" style="background:#0891b2">Market News</span>
-        <span class="competitor-tag">INSM</span>
-        <span class="keyword-tag">Hidradenitis suppurativa</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 50/100">Medium · 50</span>
-      </div>
-      <p class="summary">Insmed (INSM) shares declined as investors continued to react to the failure of its trial in Hidradenitis suppurativa (HS) and positioned ahead of the company's upcoming earnings report.</p>
-      <a class="source-link" href="https://www.quiverquant.com/news/Insmed+(INSM)+slips+6%25+as+investors+continue+to+digest+failed+HS+trial+and+reposition+ahead+of+upcoming+earnings" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-25 · quiverquant.com</div>
-    </div>
-    <div class="card"
-      data-competitors="anab"
+      data-competitors="orka|ucb"
       data-source="Press Release"
-      data-keywords=""
-      data-confidence="75">
+      data-keywords="hidradenitis suppurativa|hidradenitis suppurativa"
+      data-confidence="95">
       <div class="card-header">
         <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">ANAB</span>
-        
-        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 75/100">High · 75</span>
+        <span class="competitor-tag">ORKA</span><span class="competitor-tag">UCB</span>
+        <span class="keyword-tag">Hidradenitis suppurativa</span><span class="keyword-tag">Hidradenitis suppurativa</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 95/100">High · 95</span>
       </div>
-      <p class="summary">The Delaware Chancery Court ruled in favor of AnaptysBio by dismissing Tesaro’s anticipatory breach claim. The ruling preserves current contracted royalty rates for Jemperli and rejects Tesaro’s request for any royalty reduction.</p>
-      <a class="source-link" href="https://www.globenewswire.com/news-release/2026/04/24/3281057/0/en/Delaware-Chancery-Court-Rules-in-Favor-of-Anaptys-by-Dismissing-Tesaro-s-Anticipatory-Breach-Claim.html" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-24 · globenewswire.com</div>
+      <p class="summary">Oruka Therapeutics announced positive Week 16 data for ORKA-001 (an IL-23p19 inhibitor) in plaque psoriasis from the EVERLAST-A trial. The company highlighted the drug's extended half-life and potential for once- or twice-yearly dosing, as well as its relevance to other inflammatory conditions like hidradenitis suppurativa.</p>
+      <a class="source-link" href="https://www.globenewswire.com/news-release/2026/04/27/3281232/0/en/oruka-therapeutics-announces-positive-week-16-data-for-orka-001-from-the-ongoing-everlast-a-trial.html" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-26 · globenewswire.com</div>
+    </div>
+    <div class="card"
+      data-competitors="insm"
+      data-source="Press Release"
+      data-keywords="hidradenitis suppurativa|hidradenitis suppurativa"
+      data-confidence="70">
+      <div class="card-header">
+        <span class="badge" style="background:#2563eb">Press Release</span>
+        <span class="competitor-tag">INSM</span>
+        <span class="keyword-tag">Hidradenitis suppurativa</span><span class="keyword-tag">Hidradenitis suppurativa</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 70/100">High · 70</span>
+      </div>
+      <p class="summary">Insmed announced it is discontinuing its development program for brensocatib in hidradenitis suppurativa (HS) following results from the Phase 2b CEDAR study, which did not meet its primary endpoint of reduction in abscess and inflammatory nodule (AN) count.</p>
+      <a class="source-link" href="https://www.msn.com/en-us/health/diseases-and-conditions/insmed-drops-skin-disorder-candidate-after-mid-stage-trial-setback/ar-AA20pVc7" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-26 · msn.com</div>
+    </div>
+    <div class="card"
+      data-competitors="keyword matched"
+      data-source="Press Release"
+      data-keywords="copd|il-33|il-33"
+      data-confidence="60">
+      <div class="card-header">
+        <span class="badge" style="background:#2563eb">Press Release</span>
+        <span class="competitor-tag">Keyword matched</span>
+        <span class="keyword-tag">COPD</span><span class="keyword-tag">IL-33</span><span class="keyword-tag">IL-33</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
+      </div>
+      <p class="summary">AstraZeneca announced that its IL-33-targeting biologic, tozorakimab, met the primary endpoint in the Phase III MIRANDA trial, demonstrating a significant reduction in COPD exacerbations. This is the third positive pivotal Phase III trial for the drug in COPD.</p>
+      <a class="source-link" href="https://www.stocktitan.net/news/AZN/tozorakimab-met-primary-endpoint-in-phase-iii-miranda-trial-in-a6g6jizb0g2e.html" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-26 · stocktitan.net</div>
     </div>
     <div class="card"
       data-competitors="ucb"
       data-source="Press Release"
-      data-keywords=""
-      data-confidence="75">
+      data-keywords="hidradenitis suppurativa|hidradenitis suppurativa|il-17|il-17"
+      data-confidence="70">
       <div class="card-header">
         <span class="badge" style="background:#2563eb">Press Release</span>
         <span class="competitor-tag">UCB</span>
+        <span class="keyword-tag">Hidradenitis suppurativa</span><span class="keyword-tag">Hidradenitis suppurativa</span><span class="keyword-tag">IL-17</span><span class="keyword-tag">IL-17</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 70/100">High · 70</span>
+      </div>
+      <p class="summary">Novartis received FDA approval for Cosentyx (secukinumab) for the treatment of moderate-to-severe hidradenitis suppurativa (HS) in adolescents (ages 12 and older). Additionally, Novartis' remibrutinib (Rhapsido) received European Commission approval for CSU, with noted potential in HS.</p>
+      <a class="source-link" href="https://firstwordpharma.com/story/7209864" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-26 · firstwordpharma.com</div>
+    </div>
+    <div class="card"
+      data-competitors="keyword matched"
+      data-source="Scientific Publication"
+      data-keywords="copd|copd"
+      data-confidence="60">
+      <div class="card-header">
+        <span class="badge" style="background:#6b7280">Scientific Publication</span>
+        <span class="competitor-tag">Keyword matched</span>
+        <span class="keyword-tag">COPD</span><span class="keyword-tag">COPD</span>
+        <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 60/100">Medium · 60</span>
+      </div>
+      <p class="summary">A scientific paper titled 'Clinical Profile and Predictors of Asthma-Chronic Obstructive Pulmonary Disease Overlap in a Tertiary Care Population' was published today, providing new insights into COPD overlap syndromes.</p>
+      <a class="source-link" href="https://www.cureus.com/articles/485221-clinical-profile-and-predictors-of-asthma-chronic-obstructive-pulmonary-disease-overlap-in-a-tertiary-care-population-in-north-india" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-26 · cureus.com</div>
+    </div>
+    <div class="card"
+      data-competitors="incy"
+      data-source="News Article"
+      data-keywords=""
+      data-confidence="50">
+      <div class="card-header">
+        <span class="badge" style="background:#0891b2">News Article</span>
+        <span class="competitor-tag">INCY</span>
         
-        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 75/100">High · 75</span>
-      </div>
-      <p class="summary">UCB announced the completion of its 2026 share repurchase program. The company repurchased a total of 500,000 UCB shares to cover obligations under its Long Term Incentive Plans.</p>
-      <a class="source-link" href="https://www.ucb.com/newsroom/press-releases/article/acquisition-of-own-shares-45" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-24 · ucb.com</div>
-    </div>
-    <div class="card"
-      data-competitors="keyword matched"
-      data-source="Press Release"
-      data-keywords="copd|il-33"
-      data-confidence="50">
-      <div class="card-header">
-        <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">COPD</span><span class="keyword-tag">IL-33</span>
         <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 50/100">Medium · 50</span>
       </div>
-      <p class="summary">AstraZeneca reported that tozorakimab met the primary endpoint in Phase 3 OBERON and TITANIA trials for COPD. The drug significantly reduced the rate of moderate-to-severe exacerbations in a broad COPD population.</p>
-      <a class="source-link" href="https://www.rttnews.com/3640138/astrazeneca-says-tozorakimab-meets-main-goal-in-phase-iii-copd-trial.aspx" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-24 · rttnews.com</div>
+      <p class="summary">Incyte (INCY) reported earnings expectations for the first quarter of 2026, with analysts focused on the growth of its dermatology portfolio, including Jakafi and Opzelura.</p>
+      <a class="source-link" href="https://ca.finance.yahoo.com/news/incyte-earnings-look-incy-114855695.html" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-26 · yahoo.com</div>
     </div>
     <div class="card"
-      data-competitors="keyword matched"
-      data-source="Press Release"
-      data-keywords="hidradenitis suppurativa|il-17"
+      data-competitors="kymr"
+      data-source="Financial News"
+      data-keywords=""
       data-confidence="50">
       <div class="card-header">
-        <span class="badge" style="background:#2563eb">Press Release</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">Hidradenitis suppurativa</span><span class="keyword-tag">IL-17</span>
+        <span class="badge" style="background:#0891b2">Financial News</span>
+        <span class="competitor-tag">KYMR</span>
+        
         <span class="confidence-badge" style="margin-left:auto;background:#d977061a;color:#d97706;border:1px solid #d9770640" title="Confidence score: 50/100">Medium · 50</span>
       </div>
-      <p class="summary">The FDA approved Novartis’ Cosentyx (secukinumab) for the treatment of pediatric patients aged 12 years and older with moderate-to-severe hidradenitis suppurativa (HS). This follows previous approval for adults.</p>
-      <a class="source-link" href="https://www.biospace.com/press-releases/novartis-cosentyx-receives-fda-approval-for-pediatric-patients-aged-12-with-moderate-to-severe-hidradenitis-suppurativa" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-24 · biospace.com</div>
-    </div>
-    <div class="card"
-      data-competitors="keyword matched"
-      data-source="Scientific Publication"
-      data-keywords="il-17"
-      data-confidence="75">
-      <div class="card-header">
-        <span class="badge" style="background:#6b7280">Scientific Publication</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">IL-17</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 75/100">High · 75</span>
-      </div>
-      <p class="summary">A study published in PubMed identifies Transcobalamin 1 (TCN1) as a keratinocyte-derived autoantigen that promotes Th17 cell differentiation and activates the IL-17 pathway in inflammatory skin disease contexts.</p>
-      <a class="source-link" href="https://pubmed.ncbi.nlm.nih.gov/42030399/" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-24 · pubmed.ncbi.nlm.nih.gov</div>
-    </div>
-    <div class="card"
-      data-competitors="keyword matched"
-      data-source="Scientific Publication"
-      data-keywords="hidradenitis suppurativa"
-      data-confidence="75">
-      <div class="card-header">
-        <span class="badge" style="background:#6b7280">Scientific Publication</span>
-        <span class="competitor-tag">Keyword matched</span>
-        <span class="keyword-tag">Hidradenitis suppurativa</span>
-        <span class="confidence-badge" style="margin-left:auto;background:#16a34a1a;color:#16a34a;border:1px solid #16a34a40" title="Confidence score: 75/100">High · 75</span>
-      </div>
-      <p class="summary">The Journal of the American Academy of Dermatology published a commentary online regarding current data and care strategies for Hidradenitis Suppurativa.</p>
-      <a class="source-link" href="https://www.jaad.org/inpress" target="_blank" rel="noopener">View Source →</a>
-      <div class="card-domain">📅 2026-04-24 · jaad.org</div>
+      <p class="summary">B. Metzler seel. Sohn & Co. AG reported a new position in Kymera Therapeutics (KYMR) as of April 27, 2026, according to recent SEC filings.</p>
+      <a class="source-link" href="https://www.marketbeat.com/instant-alerts/filing-b-metzler-seel-sohn-co-ag-purchases-new-holdings-in-kymera-therapeutics-inc-kymr-2026-04-27/" target="_blank" rel="noopener">View Source →</a>
+      <div class="card-domain">📅 2026-04-26 · marketbeat.com</div>
     </div>
       </div>
     </div>
